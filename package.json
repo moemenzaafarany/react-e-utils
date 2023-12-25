@@ -1,6 +1,6 @@
 {
   "name": "react-e-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Utils to help you react project, JS and hook components",
   "main": "src/index.jsx",
   "scripts": {
