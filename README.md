@@ -59,12 +59,36 @@ npm install react-e-utils
 
 JS functions.
 
+<p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
 
 #### **-- eType:**
 
 JS variable types.
 
-```javascript
-eType.null();
+```js
+eType.null(value); // null, undefined, NaN
+eType.empty(value); // null, undefined, NaN, "", {}, []
+eType.str(value, (canBeNull = true | false)); // string
+eType.num(value, (canBeNull = true | false)); // int, float
+eType.bool(value, (canBeNull = true | false)); // boolean
+eType.arr(value, (canBeNull = true | false)); // array []
+eType.obj(value, (canBeNull = true | false)); // object {}
+eType.func(value, (canBeNull = true | false)); // functions
+eType.class(value, className, (canBeNull = true | false)); // class
+eType.file(value, (canBeNull = true | false)); // File
+eType.blob(value, (canBeNull = true | false)); // Blob
+eType.image(value, (canBeNull = true | false)); // Image
+eType.formData(value, (canBeNull = true | false)); // FormData
+eType.node(value, (canBeNull = true | false)); // Node
+eType.element(value, (canBeNull = true | false)); // HTMLElement
+eType.eRes(value, (canBeNull = true | false)); // eRes
+eType.eDate(value, (canBeNull = true | false)); // eDate
+eType.eColor(value, (canBeNull = true | false)); // eColor
+
+eType.of(value); // get type
+eType.multi(value, (types = ["str"]), (canBeNull = true | false)); // of multiple types
 ```
+
+<p align="right">(<a href="#react-e-utils">back to top</a>)</p>
+<hr>
