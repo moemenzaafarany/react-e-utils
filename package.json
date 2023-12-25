@@ -1,0 +1,23 @@
+{
+  "name": "react-e-utils",
+  "version": "1.0.0",
+  "description": "Utils to help you react project, JS and hook components",
+  "main": "src/index.jsx",
+  "scripts": {
+    "build": "babel src -d dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "js",
+    "utils",
+    "npm"
+  ],
+  "author": "moemen zaafarany",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.6",
+    "@babel/preset-react": "^7.23.3"
+  }
+}
