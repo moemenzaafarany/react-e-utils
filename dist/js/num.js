@@ -1,3 +1,5 @@
+import { eType } from "./type";
+import { eStr } from "./str";
 export class eNum {
   static parse(value) {
     try {
@@ -96,9 +98,9 @@ export class eNum {
       return NaN;
     }
   }
-  static readable(value, percision = 1, seperator = ",") {
+  static readable(value, percision = 1, seperator = ",", persistentPercision = false) {
     try {
-      if (!eType.num(value) || !eType.num(percision, true) || !eType.str(seperator)) throw `invalid value=${eStr.from(value)}|percision=${eStr.from(percision)}|seperator=${eStr.from(seperator)}`;
+      if (!eType.num(value) || !eType.num(percision, true) || !eType.str(seperator) || !eType.bool(persistentPercision)) throw `invalid value=${eStr.from(value)}|percision=${eStr.from(percision)}|seperator=${eStr.from(seperator)}|persistentPercision=${eStr.from(persistentPercision)}`;
       //
       var num = Math.abs(eNum.round(value, percision)).toString().split(".");
       var str = num[0] ?? "0";
@@ -115,7 +117,11 @@ export class eNum {
       // add sign
       if (Math.sign(value) < 0) res = `-${res}`;
       // add decimals
-      if (percision > 0) res = `${res}.${eStr.pad(dec, percision, "0", false)}`;
+      if (percision > 0 || persistentPercision) {
+        let perc = dec;
+        if (persistentPercision) perc = eStr.padRight(dec, percision, "0");
+        res = `${res}.${perc}`;
+      }
       //
       return res.toString();
     } catch (err) {

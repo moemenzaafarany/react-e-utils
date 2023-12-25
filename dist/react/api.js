@@ -4,23 +4,24 @@ import { ApisEB } from "../configs/apis";
 import { createEContext } from "./core/my-react";
 
 // functions
-export const useEApiCall = (
-  caller,
-  url,
-  {
-    method = "POST",
-    headers = {},
-    urlData = {},
-    bodyData = {},
-    bodyDataType = null,
-    responseType = null,
-    onBefore = null,
-    onAfter = null,
-
-    onSuccess = ({ message, data }) => {},
-    onError = ({ message, data }) => {},
-  } = {}
-) => {
+export const useEApiCall = (caller, url, {
+  method = "POST",
+  headers = {},
+  urlData = {},
+  bodyData = {},
+  bodyDataType = null,
+  responseType = null,
+  onBefore = null,
+  onAfter = null,
+  onSuccess = ({
+    message,
+    data
+  }) => {},
+  onError = ({
+    message,
+    data
+  }) => {}
+} = {}) => {
   return async () => {
     let r = await caller.call(url, {
       method,
@@ -30,12 +31,11 @@ export const useEApiCall = (
       ...(bodyDataType && bodyDataType),
       ...(responseType && responseType),
       ...(onBefore && onBefore),
-      ...(onAfter && onAfter),
+      ...(onAfter && onAfter)
     });
     if (r.success === false) {
       console.log(r.message, r.data);
-      if (onError) onError(r);
-      else {
+      if (onError) onError(r);else {
         alert(r.message);
       }
       return false;
@@ -45,25 +45,26 @@ export const useEApiCall = (
     }
   };
 };
-export const useEApiCallStored = (
-  caller,
-  url,
-  {
-    method = "POST",
-    headers = {},
-    urlData = {},
-    bodyData = {},
-    bodyDataType = null,
-    responseType = null,
-    onBefore = null,
-    onAfter = null,
-    namespace = "",
-    storage = "session",
-
-    onSuccess = ({ message, data }) => {},
-    onError = ({ message, data }) => {},
-  } = {}
-) => {
+export const useEApiCallStored = (caller, url, {
+  method = "POST",
+  headers = {},
+  urlData = {},
+  bodyData = {},
+  bodyDataType = null,
+  responseType = null,
+  onBefore = null,
+  onAfter = null,
+  namespace = "",
+  storage = "session",
+  onSuccess = ({
+    message,
+    data
+  }) => {},
+  onError = ({
+    message,
+    data
+  }) => {}
+} = {}) => {
   return async () => {
     let r = await caller.callStored(url, {
       method,
@@ -75,12 +76,11 @@ export const useEApiCallStored = (
       ...(onBefore && onBefore),
       ...(onAfter && onAfter),
       namespace,
-      storage,
+      storage
     });
     if (r.success === false) {
       console.log(r.message, r.data);
-      if (onError) onError(r);
-      else {
+      if (onError) onError(r);else {
         alert(r.message);
       }
       return false;
@@ -91,28 +91,27 @@ export const useEApiCallStored = (
   };
 };
 // states
-export const useEApiState = (
-  caller,
-  url,
-  {
-    autoCall = true,
-
-    method = "POST",
-    headers = {},
-    urlData = {},
-    bodyData = {},
-    bodyDataType = null,
-    responseType = null,
-    onBefore = null,
-    onAfter = null,
-
-    onSuccess = ({ message, data }) => {},
-    onError = ({ message, data }) => {},
-  } = {}
-) => {
+export const useEApiState = (caller, url, {
+  autoCall = true,
+  method = "POST",
+  headers = {},
+  urlData = {},
+  bodyData = {},
+  bodyDataType = null,
+  responseType = null,
+  onBefore = null,
+  onAfter = null,
+  onSuccess = ({
+    message,
+    data
+  }) => {},
+  onError = ({
+    message,
+    data
+  }) => {}
+} = {}) => {
   const [getW, setW] = useState(autoCall);
   const [getV, setV] = useState(null);
-
   const call = async ({
     method = "POST",
     headers = {},
@@ -122,9 +121,14 @@ export const useEApiState = (
     responseType = null,
     onBefore = null,
     onAfter = null,
-
-    onSuccess = ({ message, data }) => {},
-    onError = ({ message, data }) => {},
+    onSuccess = ({
+      message,
+      data
+    }) => {},
+    onError = ({
+      message,
+      data
+    }) => {}
   } = {}) => {
     setW(true);
     setV(null);
@@ -139,13 +143,12 @@ export const useEApiState = (
         ...(onBefore && onBefore),
         ...(onAfter && onAfter),
         namespace,
-        storage,
+        storage
       });
       setW(false);
       if (r.success === false) {
         console.log(r.message, r.data);
-        if (onError) onError(r);
-        else {
+        if (onError) onError(r);else {
           alert(r.message);
         }
         return false;
@@ -170,12 +173,11 @@ export const useEApiState = (
         onBefore,
         onAfter,
         onSuccess,
-        onError,
+        onError
       });
     }
     // eslint-disable-next-line
   }, []);
-
   return {
     get value() {
       return getV;
@@ -192,43 +194,42 @@ export const useEApiState = (
       return value;
     },
     call: call,
-    recall: () =>
-      call({
-        method,
-        headers,
-        urlData,
-        bodyData,
-        bodyDataType,
-        responseType,
-        onBefore,
-        onAfter,
-        onSuccess,
-        onError,
-      }),
+    recall: () => call({
+      method,
+      headers,
+      urlData,
+      bodyData,
+      bodyDataType,
+      responseType,
+      onBefore,
+      onAfter,
+      onSuccess,
+      onError
+    })
   };
 };
-export const useEApiStoredState = (
-  caller,
-  url,
-  {
-    autoCall = true,
-    autoNS = true,
-
-    method = "POST",
-    headers = {},
-    urlData = {},
-    bodyData = {},
-    bodyDataType = null,
-    responseType = null,
-    onBefore = null,
-    onAfter = null,
-    namespace = "",
-    storage = "session",
-
-    onSuccess = ({ message, data }) => {},
-    onError = ({ message, data }) => {},
-  } = {}
-) => {
+export const useEApiStoredState = (caller, url, {
+  autoCall = true,
+  autoNS = true,
+  method = "POST",
+  headers = {},
+  urlData = {},
+  bodyData = {},
+  bodyDataType = null,
+  responseType = null,
+  onBefore = null,
+  onAfter = null,
+  namespace = "",
+  storage = "session",
+  onSuccess = ({
+    message,
+    data
+  }) => {},
+  onError = ({
+    message,
+    data
+  }) => {}
+} = {}) => {
   const getNamespace = (namespace, bodyData) => {
     if (!autoNS) {
       return namespace;
@@ -236,11 +237,9 @@ export const useEApiStoredState = (
       return `${namespace}:${eList.objToUrlData(bodyData ?? {})}`;
     }
   };
-
   const [getN, setN] = useState(getNamespace(namespace, bodyData));
   const [getV, setV] = useState(ApisEB.checkStored(url, getN)?.data ?? null);
   const [getW, setW] = useState(getV === null && autoCall);
-
   const call = async ({
     method = "POST",
     headers = {},
@@ -252,9 +251,14 @@ export const useEApiStoredState = (
     onAfter = null,
     namespace = "",
     storage = "session",
-
-    onSuccess = ({ message, data }) => {},
-    onError = ({ message, data }) => {},
+    onSuccess = ({
+      message,
+      data
+    }) => {},
+    onError = ({
+      message,
+      data
+    }) => {}
   } = {}) => {
     setW(true);
     setV(null);
@@ -269,14 +273,13 @@ export const useEApiStoredState = (
         ...(onBefore && onBefore),
         ...(onAfter && onAfter),
         namespace: getNamespace(namespace, bodyData),
-        storage,
+        storage
       });
       setW(false);
       setN(getNamespace(namespace, bodyData));
       if (r.success === false) {
         console.log(r.message, r.data);
-        if (onError) onError(r);
-        else {
+        if (onError) onError(r);else {
           alert(r.message);
         }
         return false;
@@ -303,12 +306,11 @@ export const useEApiStoredState = (
         namespace,
         storage,
         onSuccess,
-        onError,
+        onError
       });
     }
     // eslint-disable-next-line
   }, []);
-
   return {
     get value() {
       return getV;
@@ -332,100 +334,7 @@ export const useEApiStoredState = (
       return value;
     },
     call: call,
-    recall: () =>
-      call({
-        method,
-        headers,
-        urlData,
-        bodyData,
-        bodyDataType,
-        responseType,
-        onBefore,
-        onAfter,
-        namespace,
-        storage,
-        onSuccess,
-        onError,
-      }),
-  };
-};
-// context
-export function createEApiContext(
-  caller,
-  url,
-  {
-    autoCall = true,
-
-    method = "POST",
-    headers = {},
-    urlData = {},
-    bodyData = {},
-    bodyDataType = null,
-    responseType = null,
-    onBefore = null,
-    onAfter = null,
-
-    onSuccess = ({ message, data }) => {},
-    onError = ({ message, data }) => {},
-    processData = (data) => data,
-  } = {}
-) {
-  return createEContext(() => {
-    const { value, waiting, call, recall } = useEApiState(caller, url, {
-      autoCall,
-
-      method,
-      headers,
-      urlData,
-      bodyData,
-      bodyDataType,
-      responseType,
-      onBefore,
-      onAfter,
-
-      onSuccess,
-      onError,
-    });
-
-    return {
-      get data() {
-        return processData(value);
-      },
-      value,
-      waiting,
-      call,
-      recall,
-    };
-  });
-}
-export function createEApiStoredContext(
-  caller,
-  url,
-  {
-    autoCall = true,
-    autoNS = true,
-
-    method = "POST",
-    headers = {},
-    urlData = {},
-    bodyData = {},
-    bodyDataType = null,
-    responseType = null,
-    onBefore = null,
-    onAfter = null,
-    namespace = "",
-    storage = "session",
-
-    onSuccess = ({ message, data }) => {},
-    onError = ({ message, data }) => {},
-    processData = (data) => data,
-  } = {}
-) {
-  return createEContext(() => {
-    const { value, waiting, call, recall } = useEApiStoredState(caller, url, {
-      autoCall,
-      autoNS,
-
+    recall: () => call({
       method,
       headers,
       urlData,
@@ -436,11 +345,51 @@ export function createEApiStoredContext(
       onAfter,
       namespace,
       storage,
-
       onSuccess,
-      onError,
+      onError
+    })
+  };
+};
+// context
+export function createEApiContext(caller, url, {
+  autoCall = true,
+  method = "POST",
+  headers = {},
+  urlData = {},
+  bodyData = {},
+  bodyDataType = null,
+  responseType = null,
+  onBefore = null,
+  onAfter = null,
+  onSuccess = ({
+    message,
+    data
+  }) => {},
+  onError = ({
+    message,
+    data
+  }) => {},
+  processData = data => data
+} = {}) {
+  return createEContext(() => {
+    const {
+      value,
+      waiting,
+      call,
+      recall
+    } = useEApiState(caller, url, {
+      autoCall,
+      method,
+      headers,
+      urlData,
+      bodyData,
+      bodyDataType,
+      responseType,
+      onBefore,
+      onAfter,
+      onSuccess,
+      onError
     });
-
     return {
       get data() {
         return processData(value);
@@ -448,7 +397,63 @@ export function createEApiStoredContext(
       value,
       waiting,
       call,
-      recall,
+      recall
+    };
+  });
+}
+export function createEApiStoredContext(caller, url, {
+  autoCall = true,
+  autoNS = true,
+  method = "POST",
+  headers = {},
+  urlData = {},
+  bodyData = {},
+  bodyDataType = null,
+  responseType = null,
+  onBefore = null,
+  onAfter = null,
+  namespace = "",
+  storage = "session",
+  onSuccess = ({
+    message,
+    data
+  }) => {},
+  onError = ({
+    message,
+    data
+  }) => {},
+  processData = data => data
+} = {}) {
+  return createEContext(() => {
+    const {
+      value,
+      waiting,
+      call,
+      recall
+    } = useEApiStoredState(caller, url, {
+      autoCall,
+      autoNS,
+      method,
+      headers,
+      urlData,
+      bodyData,
+      bodyDataType,
+      responseType,
+      onBefore,
+      onAfter,
+      namespace,
+      storage,
+      onSuccess,
+      onError
+    });
+    return {
+      get data() {
+        return processData(value);
+      },
+      value,
+      waiting,
+      call,
+      recall
     };
   });
 }

@@ -1,3 +1,5 @@
+import { eType } from "./type";
+import { eDom } from "./dom";
 export class eNotification {
   //========< getters
   static get supported() {

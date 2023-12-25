@@ -1,3 +1,5 @@
+import { eType } from "./type";
+import { eStr } from "./str";
 export class eDom {
   //========< dom elements
   static get html() {

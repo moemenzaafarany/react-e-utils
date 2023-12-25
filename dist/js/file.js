@@ -1,3 +1,5 @@
+import { eType } from "./type";
+import { eStr } from "./str";
 export class eFile {
   static getContentAsText(file) {
     return new Promise((resolve, reject) => {

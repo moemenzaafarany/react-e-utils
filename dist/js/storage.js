@@ -1,3 +1,5 @@
+import { eType } from "./type";
+import { eStr } from "./str";
 export class eUrl {
   // url
   static getUrl(href, hashPath) {

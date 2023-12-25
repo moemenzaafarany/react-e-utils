@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 //==============================< Context
-export const CreateEContext = (func = () => {}) => {
+export const createEContext = (func = () => {}) => {
   const Context = /*#__PURE__*/createContext({});
   return {
     Context: Context,
@@ -25,8 +25,8 @@ export const CreateEContext = (func = () => {}) => {
   };
 };
 //==============================< Translation
-export function createTranslationContext(translation) {
-  return Context(() => {
+export function createETranslationContext(translation) {
+  return createEContext(() => {
     const locale = State(translation.locale.code);
     const dir = State(translation.locale.dir);
     const fonts = State(translation.locale.fonts);

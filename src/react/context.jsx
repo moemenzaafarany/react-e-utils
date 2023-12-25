@@ -24,7 +24,7 @@ export const createEContext = (func = () => {}) => {
 };
 //==============================< Translation
 export function createETranslationContext(translation) {
-  return Context(() => {
+  return createEContext(() => {
     const locale = State(translation.locale.code);
     const dir = State(translation.locale.dir);
     const fonts = State(translation.locale.fonts);

@@ -1,3 +1,6 @@
+import { eRes } from "./res";
+import { eDate } from "./date";
+import { eColor } from "./color";
 export class eType {
   static multi(value, types, canBeNull = false) {
     if (canBeNull && eType.null(value) || !eType.null(value)) {
