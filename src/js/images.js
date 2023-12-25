@@ -1,3 +1,8 @@
+import { eType } from "./type";
+import { eStr } from "./str";
+import { eList } from "./list";
+import { eFile } from "./file";
+
 export class eImageEditor {
     //========< image
     #canvas = document.createElement("canvas");

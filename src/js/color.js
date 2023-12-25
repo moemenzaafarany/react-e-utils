@@ -1,3 +1,7 @@
+import { eType } from "./type";
+import { eStr } from "./str";
+import { eNum } from "./num";
+
 export class eColor {
     //========< variable & constructor
     #r;

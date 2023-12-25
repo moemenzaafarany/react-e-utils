@@ -1,3 +1,6 @@
+import { eType } from "./type";
+import { eStr } from "./str";
+
 export class eFile {
     static getContentAsText(file) {
         return new Promise((resolve, reject) => {
@@ -33,7 +36,6 @@ export class eFile {
         return new Promise((resolve, reject) => {
             try {
                 if (!eType.file(file)) throw `invalid file=${eStr.from(file)}`;
-
                 const reader = new FileReader();
                 reader.readAsBinaryString(file);
                 reader.onload = () => resolve(reader.result);

@@ -1,3 +1,6 @@
+import { eType } from "./type";
+import { eStr } from "./str";
+
 export class eList {
     //=======< array
     static findIndex(array, findCondition = (index, value) => { }) {

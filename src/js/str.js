@@ -1,3 +1,5 @@
+import { eType } from "./type";
+
 export class eStr {
     static pad(value, length, padChar = "0", left = true) {
         try {
@@ -16,6 +18,12 @@ export class eStr {
             console.trace(this?.constructor?.name, err);
             return undefined;
         }
+    }
+    static padLeft(value, length, padChar = "0") {
+        return eStr.pad(value, length, padChar, true);
+    }
+    static padRight(value, length, padChar = "0") {
+        return eStr.pad(value, length, padChar, false);
     }
     static repeat(value, count) {
         try {
