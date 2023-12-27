@@ -471,7 +471,29 @@ export class eColor {
     //========< some colors
     static get colors() {
         return {
+
+
+            light: eColor.parse("#eee"),
+            dark: eColor.parse("#333"),
+            black: eColor.colors.black,
+            error: eColor.colors.red,
+            warning: eColor.colors.orangered,
+            alert: eColor.colors.teal,
+            info: eColor.parse("#0066cc"),
+            success: eColor.colors.green,
+
             get transparent() { return new eColor(255, 255, 255, 0) },
+
+            get light() { return new eColor(238, 238, 238, 0) },
+            get dark() { return new eColor(51, 51, 51, 0) },
+            get error() { return new eColor(220, 53, 69, 0) },
+            get danger() { return new eColor(220, 53, 69, 0) },
+            get warning() { return new eColor(255, 193, 7, 0) },
+            get warn() { return new eColor(255, 193, 7, 0) },
+            get success() { return new eColor(40, 167, 69, 0) },
+            get alert() { return new eColor(23, 162, 184, 0) },
+            get info() { return new eColor(23, 162, 184, 0) },
+
             get aliceblue() { return new eColor(240, 248, 255) },
             get antiquewhite() { return new eColor(250, 235, 215) },
             get aqua() { return new eColor(0, 255, 255) },

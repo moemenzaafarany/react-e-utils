@@ -1,7 +1,13 @@
-import { useRef } from "react";
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Ref = void 0;
+var _react = require("react");
 //==============================< Ref
-export const Ref = initValue => {
-  const get = useRef(initValue);
+var Ref = exports.Ref = function Ref(initValue) {
+  var get = (0, _react.useRef)(initValue);
   return {
     get value() {
       return get.current;
