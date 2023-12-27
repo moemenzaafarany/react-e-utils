@@ -22,6 +22,6 @@ export { eType, eStr, eNum, eList, eFile, eDom, eDate, eColor, eRes, eSuccess, e
 import { useEState, useEAsyncState } from "./react/state";
 import { useERef } from "./react/ref";
 import { useECookieState, useESessionStorageState, useELocaleStorageState } from "./react/storage";
-import { createEContext, createETranslationContext } from "./react/context";
+import { createEContext, MultiEProviders, createETranslationContext } from "./react/context";
 import { useEApiCall, useEApiCallStored, useEApiState, useEApiStoredState, createEApiContext, createEApiStoredContext } from "./react/api";
-export { useEState, useEAsyncState, useERef, useECookieState, useESessionStorageState, useELocaleStorageState, createEContext, createETranslationContext, useEApiCall, useEApiCallStored, useEApiState, useEApiStoredState, createEApiContext, createEApiStoredContext };
+export { useEState, useEAsyncState, useERef, useECookieState, useESessionStorageState, useELocaleStorageState, createEContext, MultiEProviders, createETranslationContext, useEApiCall, useEApiCallStored, useEApiState, useEApiStoredState, createEApiContext, createEApiStoredContext };

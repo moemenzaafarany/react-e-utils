@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from "react";
 //==============================< cookie State
 export function useECookieState(
   name,
-  { fallback = null, expireHours = 24 * 7 } = []
+  { fallback = null, expireHours = 24 * 7 } = {}
 ) {
   const key = `c:${name}`;
   const [getV, setV] = useState(() => eCookie.get(key) ?? fallback);
@@ -32,7 +32,7 @@ export function useECookieState(
   };
 }
 //==============================< session storage State
-export function useESessionStorageState(name, { fallback = null } = []) {
+export function useESessionStorageState(name, { fallback = null } = {}) {
   const key = `ss:${name}`;
   const [getV, setV] = useState(() => eSessionStorage.get(key) ?? fallback);
 
@@ -61,7 +61,7 @@ export function useESessionStorageState(name, { fallback = null } = []) {
   };
 }
 //==============================< locale storage State
-export function useELocaleStorageState(name, { fallback = null } = []) {
+export function useELocaleStorageState(name, { fallback = null } = {}) {
   const key = `ls:${name}`;
   const [getV, setV] = useState(() => eLocaleStorage.get(key) ?? fallback);
 

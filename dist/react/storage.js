@@ -3,7 +3,7 @@ import { useLayoutEffect, useState } from "react";
 export function useECookieState(name, {
   fallback = null,
   expireHours = 24 * 7
-} = []) {
+} = {}) {
   const key = `c:${name}`;
   const [getV, setV] = useState(() => eCookie.get(key) ?? fallback);
   useLayoutEffect(() => {
@@ -33,7 +33,7 @@ export function useECookieState(name, {
 //==============================< session storage State
 export function useESessionStorageState(name, {
   fallback = null
-} = []) {
+} = {}) {
   const key = `ss:${name}`;
   const [getV, setV] = useState(() => eSessionStorage.get(key) ?? fallback);
   useLayoutEffect(() => {
@@ -61,7 +61,7 @@ export function useESessionStorageState(name, {
 //==============================< locale storage State
 export function useELocaleStorageState(name, {
   fallback = null
-} = []) {
+} = {}) {
   const key = `ls:${name}`;
   const [getV, setV] = useState(() => eLocaleStorage.get(key) ?? fallback);
   useLayoutEffect(() => {

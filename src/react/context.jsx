@@ -1,4 +1,8 @@
+import React from "react";
 import { createContext, useContext } from "react";
+import { eTranslation } from "../js/translation";
+import { eType } from "../js/type";
+
 //==============================< Context
 export const createEContext = (func = () => {}) => {
   const Context = createContext({});
@@ -23,7 +27,16 @@ export const createEContext = (func = () => {}) => {
   };
 };
 //==============================< Translation
-export function createETranslationContext(translation) {
+export function createETranslationContext(
+  locales = [],
+  { fillerTag = null, autoDetect = true, defaultLocale = "en" } = {}
+) {
+  const translation = new eTranslation(locales, {
+    fillerTag,
+    autoDetect,
+    defaultLocale,
+  });
+
   return createEContext(() => {
     const locale = State(translation.locale.code);
     const dir = State(translation.locale.dir);
@@ -62,3 +75,21 @@ export function createETranslationContext(translation) {
     };
   });
 }
+//==============================< multi provider
+export const MultiEProviders = ({
+  providers = [{ provider: null, props: null }],
+  children,
+}) => {
+  const child = <MultiEProvidersChild children={children} />;
+  const provds = providers.reverse().reduceRight((accumulated, obj) => {
+    if (eType.obj(obj)) {
+      return <obj.provider {...obj.props}>{accumulated}</obj.provider>;
+    }
+    return accumulated;
+  }, child);
+
+  return provds;
+};
+const MultiEProvidersChild = ({ children }) => {
+  return <>{children}</>;
+};

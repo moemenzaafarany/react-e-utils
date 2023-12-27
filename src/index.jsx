@@ -62,7 +62,11 @@ import {
   useESessionStorageState,
   useELocaleStorageState,
 } from "./react/storage";
-import { createEContext, createETranslationContext } from "./react/context";
+import {
+  createEContext,
+  MultiEProviders,
+  createETranslationContext,
+} from "./react/context";
 import {
   useEApiCall,
   useEApiCallStored,
@@ -79,6 +83,7 @@ export {
   useESessionStorageState,
   useELocaleStorageState,
   createEContext,
+  MultiEProviders,
   createETranslationContext,
   useEApiCall,
   useEApiCallStored,
