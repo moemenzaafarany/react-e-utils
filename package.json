@@ -1,6 +1,6 @@
 {
   "name": "react-e-utils",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Utils to help you react project, JS and hook components",
   "main": "src/index.jsx",
   "scripts": {
@@ -21,6 +21,7 @@
     "@babel/preset-react": "^7.23.3"
   },
   "dependencies": {
+    "babel-loader": "^9.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

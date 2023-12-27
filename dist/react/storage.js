@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from "react";
 //==============================< cookie State
-export function useECookieState(name, {
+export function CookieState(name, {
   fallback = null,
   expireHours = 24 * 7
 } = {}) {
@@ -31,7 +31,7 @@ export function useECookieState(name, {
   };
 }
 //==============================< session storage State
-export function useESessionStorageState(name, {
+export function SessionStorageState(name, {
   fallback = null
 } = {}) {
   const key = `ss:${name}`;
@@ -59,7 +59,7 @@ export function useESessionStorageState(name, {
   };
 }
 //==============================< locale storage State
-export function useELocaleStorageState(name, {
+export function LocaleStorageState(name, {
   fallback = null
 } = {}) {
   const key = `ls:${name}`;

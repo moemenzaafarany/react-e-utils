@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //==============================< State
-export const useEState = initValue => {
+export const State = initValue => {
   const [getV, setV] = useState(initValue);
   return {
     get value() {
@@ -13,7 +13,7 @@ export const useEState = initValue => {
   };
 };
 //==============================< cookie State
-export function useEAsyncState(func = async () => null) {
+export function AsyncState(func = async () => null, autoRun = false) {
   const [getW, setW] = useState(false);
   const [getV, setV] = useState(null);
   const run = async params => {
@@ -33,6 +33,11 @@ export function useEAsyncState(func = async () => null) {
       }, 10);
     });
   };
+
+  // auto run
+  useEffect(() => {
+    if (autoRun === true) run();
+  }, []);
   return {
     get value() {
       return getV;

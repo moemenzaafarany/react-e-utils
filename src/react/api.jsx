@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { eList } from "./core/my-js";
-import { ApisEB } from "../configs/apis";
-import { createEContext } from "./core/my-react";
+import { Context } from "./context";
 
 // states
-export const useEApiState = (
+export const ApiState = (
   caller,
   url,
   {
@@ -120,7 +118,7 @@ export const useEApiState = (
       }),
   };
 };
-export const useEApiStoredState = (
+export const ApiStoredState = (
   caller,
   url,
   {
@@ -263,7 +261,7 @@ export const useEApiStoredState = (
   };
 };
 // context
-export function createEApiContext(
+export function ApiContext(
   caller,
   url,
   {
@@ -283,8 +281,8 @@ export function createEApiContext(
     processData = (data) => data,
   } = {}
 ) {
-  return createEContext(() => {
-    const { value, waiting, call, recall } = useEApiState(caller, url, {
+  return Context(() => {
+    const { value, waiting, call, recall } = ApiState(caller, url, {
       autoCall,
 
       method,
@@ -311,7 +309,7 @@ export function createEApiContext(
     };
   });
 }
-export function createEApiStoredContext(
+export function ApiStoredContext(
   caller,
   url,
   {
@@ -334,8 +332,8 @@ export function createEApiStoredContext(
     processData = (data) => data,
   } = {}
 ) {
-  return createEContext(() => {
-    const { value, waiting, call, recall } = useEApiStoredState(caller, url, {
+  return Context(() => {
+    const { value, waiting, call, recall } = ApiStoredState(caller, url, {
       autoCall,
       autoNS,
 

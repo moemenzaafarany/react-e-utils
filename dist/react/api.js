@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { eList } from "./core/my-js";
-import { ApisEB } from "../configs/apis";
-import { createEContext } from "./core/my-react";
+import { Context } from "./context";
 
 // states
-export const useEApiState = (caller, url, {
+export const ApiState = (caller, url, {
   autoCall = true,
   method = "POST",
   headers = {},
@@ -121,7 +119,7 @@ export const useEApiState = (caller, url, {
     })
   };
 };
-export const useEApiStoredState = (caller, url, {
+export const ApiStoredState = (caller, url, {
   autoCall = true,
   autoNS = true,
   method = "POST",
@@ -264,7 +262,7 @@ export const useEApiStoredState = (caller, url, {
   };
 };
 // context
-export function createEApiContext(caller, url, {
+export function ApiContext(caller, url, {
   autoCall = true,
   method = "POST",
   headers = {},
@@ -284,13 +282,13 @@ export function createEApiContext(caller, url, {
   }) => {},
   processData = data => data
 } = {}) {
-  return createEContext(() => {
+  return Context(() => {
     const {
       value,
       waiting,
       call,
       recall
-    } = useEApiState(caller, url, {
+    } = ApiState(caller, url, {
       autoCall,
       method,
       headers,
@@ -314,7 +312,7 @@ export function createEApiContext(caller, url, {
     };
   });
 }
-export function createEApiStoredContext(caller, url, {
+export function ApiStoredContext(caller, url, {
   autoCall = true,
   autoNS = true,
   method = "POST",
@@ -337,13 +335,13 @@ export function createEApiStoredContext(caller, url, {
   }) => {},
   processData = data => data
 } = {}) {
-  return createEContext(() => {
+  return Context(() => {
     const {
       value,
       waiting,
       call,
       recall
-    } = useEApiStoredState(caller, url, {
+    } = ApiStoredState(caller, url, {
       autoCall,
       autoNS,
       method,

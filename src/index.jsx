@@ -15,7 +15,7 @@ import { eHttpRequest, eApiCaller } from "./js/http";
 import { eSocketServer } from "./js/socket";
 import { eNotification } from "./js/notifications";
 import { eImageEditor } from "./js/images";
-import { eTranslation } from "./js/translation";
+import { eTranslation, eLocale } from "./js/translation";
 import {
   eGetBrowser,
   eGetDeviceType,
@@ -48,6 +48,7 @@ export {
   eNotification,
   eImageEditor,
   eTranslation,
+  eLocale,
   eGetBrowser,
   eGetDeviceType,
   eStopConsole,
@@ -55,40 +56,7 @@ export {
   multiIf,
 };
 // React
-import { useEState, useEAsyncState } from "./react/state";
-import { useERef } from "./react/ref";
-import {
-  useECookieState,
-  useESessionStorageState,
-  useELocaleStorageState,
-} from "./react/storage";
-import {
-  createEContext,
-  MultiEProviders,
-  createETranslationContext,
-} from "./react/context";
-import {
-  useEApiCall,
-  useEApiCallStored,
-  useEApiState,
-  useEApiStoredState,
-  createEApiContext,
-  createEApiStoredContext,
-} from "./react/api";
-export {
-  useEState,
-  useEAsyncState,
-  useERef,
-  useECookieState,
-  useESessionStorageState,
-  useELocaleStorageState,
-  createEContext,
-  MultiEProviders,
-  createETranslationContext,
-  useEApiCall,
-  useEApiCallStored,
-  useEApiState,
-  useEApiStoredState,
-  createEApiContext,
-  createEApiStoredContext,
-};
+import { eUse } from "./react/use";
+import { eCreate } from "./react/create";
+import { MultiProviders } from "./react/context";
+export { eUse, eCreate, MultiProviders };

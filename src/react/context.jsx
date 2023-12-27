@@ -4,7 +4,7 @@ import { eTranslation } from "../js/translation";
 import { eType } from "../js/type";
 
 //==============================< Context
-export const createEContext = (func = () => {}) => {
+export const Context = (func = () => {}) => {
   const Context = createContext({});
 
   return {
@@ -18,8 +18,8 @@ export const createEContext = (func = () => {}) => {
 
       return ctx;
     },
-    Provider: (p) => {
-      return <Context.Provider value={func()} children={p.children} />;
+    Provider: ({ children }) => {
+      return <Context.Provider value={func()} children={children} />;
     },
     Consumer: (child = (obj) => {}) => {
       return <Context.Consumer children={child} />;
@@ -27,7 +27,7 @@ export const createEContext = (func = () => {}) => {
   };
 };
 //==============================< Translation
-export function createETranslationContext(
+export function TranslationContext(
   locales = [],
   { fillerTag = null, autoDetect = true, defaultLocale = "en" } = {}
 ) {
@@ -37,7 +37,7 @@ export function createETranslationContext(
     defaultLocale,
   });
 
-  return createEContext(() => {
+  return Context(() => {
     const locale = State(translation.locale.code);
     const dir = State(translation.locale.dir);
     const fonts = State(translation.locale.fonts);
@@ -76,11 +76,11 @@ export function createETranslationContext(
   });
 }
 //==============================< multi provider
-export const MultiEProviders = ({
+export const MultiProviders = ({
   providers = [{ provider: null, props: null }],
   children,
 }) => {
-  const child = <MultiEProvidersChild children={children} />;
+  const child = <MultiProvidersChild children={children} />;
   const provds = providers.reverse().reduceRight((accumulated, obj) => {
     if (eType.obj(obj)) {
       return <obj.provider {...obj.props}>{accumulated}</obj.provider>;
@@ -90,6 +90,6 @@ export const MultiEProviders = ({
 
   return provds;
 };
-const MultiEProvidersChild = ({ children }) => {
+const MultiProvidersChild = ({ children }) => {
   return <>{children}</>;
 };

@@ -39,19 +39,21 @@ npm install react-e-utils
   - [**MISC**: misc functions](#---MISC)
 
 - [React](#--React)
-  - [**useEState**: easy use state](#---useEState)
-  - [**useEAsyncState**: easy async use state](#---useEAsyncState)
-  - [**useERef**: easy use ref](#---useERef)
-  - [**useECookieState**: use state stored as cookie](#---useECookieState)
-  - [**useESessionStorageState**: use state stored as session storage](#---useESessionStorageState)
-  - [**useELocaleStorageState**: use state stored as locale storage](#---useELocaleStorageState)
-  - [**createEContext**: easy to use context](#---createEContext)
+  - [**eUse**: easy use hooks](#---eUse)
+    - [**eUse.State**: easy use state](#---eUse.State)
+    - [**eUse.AsyncState**: easy async use state](#---eUse.AsyncState)
+    - [**eUse.Ref**: easy use ref](#---eUse.Ref)
+    - [**eUse.CookieState**: use state stored as cookie](#---eUse.CookieState)
+    - [**eUse.SessionStorageState**: use state stored as session storage](#---eUse.SessionStorageState)
+    - [**eUse.LocaleStorageState**: use state stored as locale storage](#---eUse.LocaleStorageState)
+    - [**eUse.ApiState**: call api state](#---eUse.ApiState)
+    - [**eUse.ApiStoredState**: call stored api state](#---eUse.ApiStoredState)
+  - [**eCreate**: easy create hooks](#---eCreate)
+    - [**eCreate.Context**: easy to use context](#---eCreate.Context)
+    - [**eCreate.TranslationContext**: builtIn Translation context](#---eCreate.TranslationContext)
+    - [**eCreate.ApiContext**: call api context](#---eCreate.ApiContext)
+    - [**eCreate.ApiStoredContext**: call stored api context](#---eCreate.ApiStoredContext)
   - [**MultiEProviders**: put all providers to create](#---MultiEProviders)
-  - [**createETranslationContext**: builtIn Translation context](#---createETranslationContext)
-  - [**useEApiState**: call api state](#---useEApiState)
-  - [**useEApiStoredState**: call stored api state](#---useEApiStoredState)
-  - [**createEApiContext**: call api context](#---createEApiContext)
-  - [**createEApiStoredContext**: call stored api context](#---createEApiStoredContext)
 
 <p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
@@ -499,12 +501,19 @@ React functions.
 <p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
 
-#### **-- useEState:**
+#### **-- eUse:**
+
+React use hook.
+
+<p align="right">(<a href="#react-e-utils">back to top</a>)</p>
+<hr>
+
+#### **-- eUse.State:**
 
 easy useState hook
 
 ```js
-const s = useEState(true);
+const s = eUse.State(true);
 s.value; // return current value
 s.value = false; // sets current value
 ```
@@ -512,12 +521,12 @@ s.value = false; // sets current value
 <p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
 
-#### **-- useEAsyncState:**
+#### **-- eUse.AsyncState:**
 
 easy async useState hook
 
 ```js
-const s = useEAsyncState(async () => {
+const s = eUse.AsyncState(async () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       reolve(true);
@@ -533,12 +542,12 @@ s.run(); // runs async func
 <p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
 
-#### **-- useERef:**
+#### **-- eUse.Ref:**
 
 easy async useRef hook
 
 ```js
-const s = useERef(true);
+const s = eUse.Ref(true);
 s.value || s.current; // return current value
 s.value || s.current = false; // sets current value
 ```
@@ -546,12 +555,12 @@ s.value || s.current = false; // sets current value
 <p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
 
-#### **-- useECookieState:**
+#### **-- eUse.CookieState:**
 
 easy useState from cookie hook
 
 ```js
-const s = useECookieState("cookieName",
+const s = eUse.CookieState("cookieName",
   { fallback = true, expireHours = 24 * 7 });
 s.value; // return current value
 s.value = false; // sets current value and save to cookie
@@ -561,12 +570,12 @@ s.save(value); // manuall save to cookie
 <p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
 
-#### **-- useESessionStorageState:**
+#### **-- eUse.SessionStorageState:**
 
 easy useState from session storage hook
 
 ```js
-const s = useESessionStorageState("storageName",
+const s = eUse.SessionStorageState("storageName",
   { fallback = true});
 s.value; // return current value
 s.value = false; // sets current value and save to storage
@@ -576,12 +585,12 @@ s.save(value); // manuall save to storage
 <p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
 
-#### **-- useELocaleStorageState:**
+#### **-- eUse.LocaleStorageState:**
 
 easy useState from locale storage hook
 
 ```js
-const s = useELocaleStorageState("storageName",
+const s = eUse.LocaleStorageState("storageName",
   { fallback = true});
 s.value; // return current value
 s.value = false; // sets current value and save to storage
@@ -591,13 +600,20 @@ s.save(value); // manuall save to storage
 <p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
 
-#### **-- createEContext:**
+#### **-- eCreate:**
+
+React create hook.
+
+<p align="right">(<a href="#react-e-utils">back to top</a>)</p>
+<hr>
+
+#### **-- eCreate.Context:**
 
 easy createContext that generates use, provider, consumer, context
 
 ```js
-const context = createEContext(() => {
-  const user = useEState(true);
+const context = eCreate.Context(() => {
+  const user = eUse.State(true);
 
   const setGuest = () => {
     user.value = false;
@@ -621,12 +637,12 @@ const { user, setGuest } = context.Use(); // must be inside of provider to use
 <p align="right">(<a href="#react-e-utils">back to top</a>)</p>
 <hr>
 
-#### **-- createETranslationContext:**
+#### **-- eCreate.TranslationContext:**
 
 easy built-in translation context
 
 ```js
-const translation = createETranslationContext([
+const translation = eCreate.TranslationContext([
   new eLocale(
     code = "en",
     dir = "ltr"|"rtl",

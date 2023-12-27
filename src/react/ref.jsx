@@ -1,6 +1,6 @@
 import { useRef } from "react";
 //==============================< Ref
-export const useERef = (initValue) => {
+export const Ref = (initValue) => {
   const get = useRef(initValue);
   return {
     get value() {
