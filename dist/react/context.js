@@ -14,11 +14,11 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 //==============================< Context
 var Context = exports.Context = function Context() {
   var func = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
-  var Context = /*#__PURE__*/(0, _react.createContext)({});
+  var CTX = /*#__PURE__*/(0, _react.createContext)({});
   return {
-    Context: Context,
+    Context: CTX,
     Use: function Use() {
-      var ctx = (0, _react.useContext)(Context);
+      var ctx = (0, _react.useContext)(CTX);
       if (!ctx) {
         throw new Error("context must be within a provider!");
       }
@@ -26,14 +26,14 @@ var Context = exports.Context = function Context() {
     },
     Provider: function Provider(_ref) {
       var children = _ref.children;
-      return /*#__PURE__*/_react["default"].createElement(Context.Provider, {
+      return /*#__PURE__*/_react["default"].createElement(CTX.Provider, {
         value: func(),
         children: children
       });
     },
     Consumer: function Consumer() {
       var child = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (obj) {};
-      return /*#__PURE__*/_react["default"].createElement(Context.Consumer, {
+      return /*#__PURE__*/_react["default"].createElement(CTX.Consumer, {
         children: child
       });
     }

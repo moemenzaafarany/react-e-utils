@@ -1,11 +1,12 @@
 {
   "name": "react-e-utils",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "Utils to help you react project, JS and hook components",
   "main": "src/index.jsx",
   "scripts": {
     "build": "babel src -d dist",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "lint": "eslint src/**/*.{js,jsx} --fix"
   },
   "keywords": [
     "react",
@@ -20,7 +21,13 @@
     "@babel/core": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
-    "babel-loader": "^9.1.3"
+    "babel-loader": "^9.1.3",
+    "eslint": "^8.56.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.5.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.2"
   },
   "dependencies": {
     "react": "^18.2.0",

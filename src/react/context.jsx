@@ -2,15 +2,16 @@ import React from "react";
 import { createContext, useContext } from "react";
 import { eTranslation } from "../js/translation";
 import { eType } from "../js/type";
+import { State } from "./state";
 
 //==============================< Context
 export const Context = (func = () => {}) => {
-  const Context = createContext({});
+  const CTX = createContext({});
 
   return {
-    Context: Context,
+    Context: CTX,
     Use: () => {
-      const ctx = useContext(Context);
+      const ctx = useContext(CTX);
 
       if (!ctx) {
         throw new Error("context must be within a provider!");
@@ -18,11 +19,12 @@ export const Context = (func = () => {}) => {
 
       return ctx;
     },
+    // eslint-disable-next-line react/prop-types
     Provider: ({ children }) => {
-      return <Context.Provider value={func()} children={children} />;
+      return <CTX.Provider value={func()}>{children}</CTX.Provider>;
     },
-    Consumer: (child = (obj) => {}) => {
-      return <Context.Consumer children={child} />;
+    Consumer: (child = () => {}) => {
+      return <CTX.Consumer>{child}</CTX.Consumer>;
     },
   };
 };
@@ -80,6 +82,7 @@ export const MultiProviders = ({
   providers = [{ provider: null, props: null }],
   children,
 }) => {
+  // eslint-disable-next-line react/no-children-prop
   const child = <MultiProvidersChild children={children} />;
   const provds = providers.reverse().reduceRight((accumulated, obj) => {
     if (eType.obj(obj)) {
@@ -90,6 +93,7 @@ export const MultiProviders = ({
 
   return provds;
 };
+// eslint-disable-next-line react/prop-types
 const MultiProvidersChild = ({ children }) => {
   return <>{children}</>;
 };
