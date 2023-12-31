@@ -9,34 +9,35 @@ exports.TranslationContext = TranslationContext;
 var _react = _interopRequireWildcard(require("react"));
 var _translation = require("../js/translation");
 var _type = require("../js/type");
+var _state = require("./state");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 //==============================< Context
 var Context = exports.Context = function Context() {
   var func = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
   var CTX = /*#__PURE__*/(0, _react.createContext)({});
+  var Use = function Use() {
+    var ctx = (0, _react.useContext)(CTX);
+    if (!ctx) {
+      throw new Error("context must be within a provider!");
+    }
+    return ctx;
+  };
+  var Provider = function Provider(_ref) {
+    var children = _ref.children;
+    return /*#__PURE__*/_react["default"].createElement(CTX.Provider, {
+      value: func()
+    }, children);
+  };
+  var Consumer = function Consumer() {
+    var child = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
+    return /*#__PURE__*/_react["default"].createElement(CTX.Consumer, null, child);
+  };
   return {
     Context: CTX,
-    Use: function Use() {
-      var ctx = (0, _react.useContext)(CTX);
-      if (!ctx) {
-        throw new Error("context must be within a provider!");
-      }
-      return ctx;
-    },
-    Provider: function Provider(_ref) {
-      var children = _ref.children;
-      return /*#__PURE__*/_react["default"].createElement(CTX.Provider, {
-        value: func(),
-        children: children
-      });
-    },
-    Consumer: function Consumer() {
-      var child = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (obj) {};
-      return /*#__PURE__*/_react["default"].createElement(CTX.Consumer, {
-        children: child
-      });
-    }
+    Use: Use,
+    Provider: Provider,
+    Consumer: Consumer
   };
 };
 //==============================< Translation
@@ -56,10 +57,10 @@ function TranslationContext() {
   });
   return Context(function () {
     var _fonts$value;
-    var locale = State(translation.locale.code);
-    var dir = State(translation.locale.dir);
-    var fonts = State(translation.locale.fonts);
-    var locales = State(translation.locales);
+    var locale = (0, _state.State)(translation.locale.code);
+    var dir = (0, _state.State)(translation.locale.dir);
+    var fonts = (0, _state.State)(translation.locale.fonts);
+    var locales = (0, _state.State)(translation.locales);
     var setLocale = function setLocale(newLocale) {
       translation.setLocale(newLocale, {
         reloadPage: false
@@ -99,6 +100,7 @@ var MultiProviders = exports.MultiProviders = function MultiProviders(_ref3) {
       props: null
     }] : _ref3$providers,
     children = _ref3.children;
+  // eslint-disable-next-line react/no-children-prop
   var child = /*#__PURE__*/_react["default"].createElement(MultiProvidersChild, {
     children: children
   });

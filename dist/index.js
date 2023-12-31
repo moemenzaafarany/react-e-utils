@@ -3,10 +3,34 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "BreakpointsConsumer", {
+  enumerable: true,
+  get: function get() {
+    return _breakpoints.BreakpointsConsumer;
+  }
+});
+Object.defineProperty(exports, "BreakpointsProvider", {
+  enumerable: true,
+  get: function get() {
+    return _breakpoints.BreakpointsProvider;
+  }
+});
 Object.defineProperty(exports, "MultiProviders", {
   enumerable: true,
   get: function get() {
     return _context.MultiProviders;
+  }
+});
+Object.defineProperty(exports, "TranslationConsumer", {
+  enumerable: true,
+  get: function get() {
+    return _translation2.TranslationConsumer;
+  }
+});
+Object.defineProperty(exports, "TranslationProvider", {
+  enumerable: true,
+  get: function get() {
+    return _translation2.TranslationProvider;
   }
 });
 Object.defineProperty(exports, "eApiCaller", {
@@ -189,6 +213,18 @@ Object.defineProperty(exports, "eUse", {
     return _use.eUse;
   }
 });
+Object.defineProperty(exports, "initBreakpoints", {
+  enumerable: true,
+  get: function get() {
+    return _breakpoints.initBreakpoints;
+  }
+});
+Object.defineProperty(exports, "initTranslation", {
+  enumerable: true,
+  get: function get() {
+    return _translation2.initTranslation;
+  }
+});
 Object.defineProperty(exports, "multiIf", {
   enumerable: true,
   get: function get() {
@@ -199,6 +235,18 @@ Object.defineProperty(exports, "switchIf", {
   enumerable: true,
   get: function get() {
     return _misc.switchIf;
+  }
+});
+Object.defineProperty(exports, "useBreakpoints", {
+  enumerable: true,
+  get: function get() {
+    return _breakpoints.useBreakpoints;
+  }
+});
+Object.defineProperty(exports, "useTranslation", {
+  enumerable: true,
+  get: function get() {
+    return _translation2.useTranslation;
   }
 });
 var _type = require("./js/type");
@@ -222,3 +270,5 @@ var _misc = require("./js/misc");
 var _use = require("./react/use");
 var _create = require("./react/create");
 var _context = require("./react/context");
+var _breakpoints = require("./react/breakpoints");
+var _translation2 = require("./react/translation");

@@ -7,25 +7,26 @@ import { State } from "./state";
 //==============================< Context
 export const Context = (func = () => {}) => {
   const CTX = createContext({});
+  const Use = () => {
+    const ctx = useContext(CTX);
 
+    if (!ctx) {
+      throw new Error("context must be within a provider!");
+    }
+
+    return ctx;
+  };
+  const Provider = ({ children }) => {
+    return <CTX.Provider value={func()}>{children}</CTX.Provider>;
+  };
+  const Consumer = (child = () => {}) => {
+    return <CTX.Consumer>{child}</CTX.Consumer>;
+  };
   return {
     Context: CTX,
-    Use: () => {
-      const ctx = useContext(CTX);
-
-      if (!ctx) {
-        throw new Error("context must be within a provider!");
-      }
-
-      return ctx;
-    },
-    // eslint-disable-next-line react/prop-types
-    Provider: ({ children }) => {
-      return <CTX.Provider value={func()}>{children}</CTX.Provider>;
-    },
-    Consumer: (child = () => {}) => {
-      return <CTX.Consumer>{child}</CTX.Consumer>;
-    },
+    Use: Use,
+    Provider: Provider,
+    Consumer: Consumer,
   };
 };
 //==============================< Translation
@@ -93,7 +94,6 @@ export const MultiProviders = ({
 
   return provds;
 };
-// eslint-disable-next-line react/prop-types
 const MultiProvidersChild = ({ children }) => {
   return <>{children}</>;
 };

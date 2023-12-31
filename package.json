@@ -1,36 +1,38 @@
 {
   "name": "react-e-utils",
-  "version": "1.0.10",
-  "description": "Utils to help you react project, JS and hook components",
-  "main": "src/index.jsx",
+  "version": "1.1.14",
+  "description": "React & JS Utilities",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "babel src -d dist",
-    "prepublishOnly": "npm run build",
-    "lint": "eslint src/**/*.{js,jsx} --fix"
+    "test": "jest",
+    "build": "babel src --out-dir dist --copy-files",
+    "prepublish": "rm -rf ./dist && npm run build"
   },
   "keywords": [
-    "react",
-    "js",
-    "utils",
-    "npm"
+    "React",
+    "JS",
+    "Utils"
   ],
-  "author": "moemen zaafarany",
+  "author": "Moemen Zaafarany",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/cli": "^7.23.4",
-    "@babel/core": "^7.23.6",
-    "@babel/preset-env": "^7.23.6",
-    "@babel/preset-react": "^7.23.3",
-    "babel-loader": "^9.1.3",
-    "eslint": "^8.56.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.5.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.2"
-  },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.7",
+    "@babel/preset-react": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
   }
 }

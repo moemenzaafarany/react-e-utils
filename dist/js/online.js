@@ -40,7 +40,7 @@ var eOnline = exports.eOnline = /*#__PURE__*/function () {
         if (!_type.eType.func(callback)) {
           throw "invalid callback=".concat(_str.eStr.from(callback));
         }
-        var abortOnline = offeDom.listenEvent(window, "online", function (event) {
+        var abortOnline = _dom.eDom.listenEvent(window, "online", function (event) {
           callback(true);
         }, {
           capture: true
@@ -73,11 +73,6 @@ var eOnline = exports.eOnline = /*#__PURE__*/function () {
   });
   _dom.eDom.listenEvent(window, "offline", function (event) {
     console.log("offline", event);
-  }, {
-    capture: true
-  });
-  _dom.eDom.listenEvent(navigator.connection, "change", function (event) {
-    console.log("change", event);
   }, {
     capture: true
   });

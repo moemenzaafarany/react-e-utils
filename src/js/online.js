@@ -16,7 +16,7 @@ export class eOnline {
                 throw `invalid callback=${eStr.from(callback)}`;
             }
 
-            let abortOnline = offeDom.listenEvent(window, "online", (event) => {
+            let abortOnline = eDom.listenEvent(window, "online", (event) => {
                 callback(true);
             }, { capture: true });
             let abortOffline = eDom.listenEvent(window, "offline", (event) => {
@@ -42,8 +42,5 @@ export class eOnline {
     }, { capture: true });
     eDom.listenEvent(window, "offline", (event) => {
         console.log("offline", event);
-    }, { capture: true });
-    eDom.listenEvent(navigator.connection, "change", (event) => {
-        console.log("change", event);
     }, { capture: true });
 })();
