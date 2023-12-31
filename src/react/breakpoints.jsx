@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { State } from "./state";
 import { eDom } from "../js/dom";
 import { Context } from "./context";
@@ -42,11 +42,18 @@ export const BreakpointsContext = Context(() => {
   const currentSize = State(getCurrentSize());
   const currentDevice = State(getCurrentDevice());
 
-  useLayoutEffect(() => {
-    var cont = eDom.listenEvent(window, "resize", (evt) => {
-      currentSize.value = getCurrentSize();
-      currentDevice.value = getCurrentDevice();
-    });
+  useEffect(() => {
+    var cont = eDom.listenEvent(
+      window,
+      "resize",
+      (evt) => {
+        let cs = getCurrentSize();
+        if (cs !== currentSize.value) currentSize.value = cs;
+        let cd = getCurrentDevice();
+        if (cd !== currentDevice.value) currentDevice.value = cs;
+      },
+      { capture: true }
+    );
     return () => {
       cont.abort();
     };

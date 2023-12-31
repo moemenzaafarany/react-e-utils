@@ -44,10 +44,14 @@ var BreakpointsContext = exports.BreakpointsContext = (0, _context.Context)(func
   };
   var currentSize = (0, _state.State)(getCurrentSize());
   var currentDevice = (0, _state.State)(getCurrentDevice());
-  (0, _react.useLayoutEffect)(function () {
+  (0, _react.useEffect)(function () {
     var cont = _dom.eDom.listenEvent(window, "resize", function (evt) {
-      currentSize.value = getCurrentSize();
-      currentDevice.value = getCurrentDevice();
+      var cs = getCurrentSize();
+      if (cs !== currentSize.value) currentSize.value = cs;
+      var cd = getCurrentDevice();
+      if (cd !== currentDevice.value) currentDevice.value = cs;
+    }, {
+      capture: true
     });
     return function () {
       cont.abort();
