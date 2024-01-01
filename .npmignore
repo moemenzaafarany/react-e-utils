@@ -1,4 +1,7 @@
-webpack.local.config.js
-    webpack.production.config.js
-    .eslintrc
-    .gitignore
+/src
+/node_modules
+
+.env
+.DS_Store
+
+.babelrc

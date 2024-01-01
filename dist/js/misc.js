@@ -4,8 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.eSwitchIf = exports.eStopConsole = exports.eMultiIf = exports.eGetBrowser = void 0;
-var _type = require("./type");
-var _str = require("./str");
+var _eType = require("./eType");
+var _eStr = require("./eStr");
 var _this = void 0;
 var eGetBrowser = exports.eGetBrowser = function eGetBrowser() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -24,7 +24,7 @@ var eSwitchIf = exports.eSwitchIf = function eSwitchIf() {
   var cases = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ["1", "2"];
   var values = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : ["a", "b"];
   try {
-    if (!_type.eType.arr(cases)) throw "invalid cases=".concat(_str.eStr.from(cases), "|values=").concat(_str.eStr.from(values));
+    if (!_eType.eType.arr(cases)) throw "invalid cases=".concat(_eStr.eStr.from(cases), "|values=").concat(_eStr.eStr.from(values));
     for (var i in cases) {
       if (value === cases[i]) return values[i];
     }
@@ -39,7 +39,7 @@ var eMultiIf = exports.eMultiIf = function eMultiIf(defaultValue) {
   var ifs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
   var values = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   try {
-    if (!_type.eType.arr(ifs)) throw "invalid ifs=".concat(_str.eStr.from(ifs), "|values=").concat(_str.eStr.from(values));
+    if (!_eType.eType.arr(ifs)) throw "invalid ifs=".concat(_eStr.eStr.from(ifs), "|values=").concat(_eStr.eStr.from(values));
     for (var i in ifs) {
       if (ifs[i]() === true) return values[i];
     }
