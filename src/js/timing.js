@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 export class eTimer {
     #interval = null;
     #startTime;
     #duration;
     #callback;
-    constructor(duration = 1000, callback = (time) => { }) {
+    constructor(duration = 1000, callback = (_time) => { }) {
         this.#duration = duration;
         this.#callback = callback;
     }
@@ -25,7 +26,7 @@ export class eTimeout {
     #startTime;
     #duration;
     #callback;
-    constructor(duration = 1000, callback = (time) => { }) {
+    constructor(duration = 1000, callback = (_time) => { }) {
         this.#duration = duration;
         this.#callback = callback;
     }

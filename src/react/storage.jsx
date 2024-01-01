@@ -1,4 +1,5 @@
 import { useLayoutEffect, useState } from "react";
+import { eCookie, eLocaleStorage, eSessionStorage } from "../js/storage";
 //==============================< cookie State
 export function CookieState(
   name,
@@ -26,7 +27,6 @@ export function CookieState(
     },
     set value(value) {
       setV(value);
-      return value;
     },
     save,
   };
@@ -55,7 +55,6 @@ export function SessionStorageState(name, { fallback = null } = {}) {
     },
     set value(value) {
       setV(value);
-      return value;
     },
     save,
   };
@@ -84,7 +83,6 @@ export function LocaleStorageState(name, { fallback = null } = {}) {
     },
     set value(value) {
       setV(value);
-      return value;
     },
     save,
   };

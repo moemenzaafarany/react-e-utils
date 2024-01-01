@@ -34,10 +34,10 @@ export class eDate {
                 case "ymd":
                 case "dmy":
                 case "mdy":
-                    let splitter = value.includes("/") ? "/" : "-";
-                    let d = value.split(splitter);
-                    let nd = { y: null, m: null, d: null, }
-                    let f = format.split("");
+                    var splitter = value.includes("/") ? "/" : "-";
+                    var d = value.split(splitter);
+                    var nd = { y: null, m: null, d: null, }
+                    var f = format.split("");
                     for (let i in f) {
                         switch (f[i]) {
                             case "y":

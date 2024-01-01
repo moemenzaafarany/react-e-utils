@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { eType } from "./type";
 import { eStr } from "./str";
 import { eDom } from "./dom";
@@ -8,7 +9,7 @@ export class eOnline {
     static get type() { return navigator.connection.effectiveType; }
     static get dataSaver() { return navigator.connection.saveData; }
 
-    static subscribe(callback = (online) => { }) {
+    static subscribe(callback = (_online) => { }) {
         try {
             if (
                 !eType.func(callback)
@@ -16,10 +17,10 @@ export class eOnline {
                 throw `invalid callback=${eStr.from(callback)}`;
             }
 
-            let abortOnline = eDom.listenEvent(window, "online", (event) => {
+            let abortOnline = eDom.listenEvent(window, "online", () => {
                 callback(true);
             }, { capture: true });
-            let abortOffline = eDom.listenEvent(window, "offline", (event) => {
+            let abortOffline = eDom.listenEvent(window, "offline", () => {
                 callback(false);
             }, { capture: true });
 

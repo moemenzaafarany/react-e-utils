@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 
 export class eSocketServer {
@@ -27,8 +28,8 @@ export class eSocketServer {
         host = null,
         port = null,
         filepath = null,
-        onMessage = (data) => { },
-        onStateChange = (state, stateText, connected, error) => { },
+        onMessage = (_data) => { },
+        onStateChange = (_state, _stateText, _connected, _error) => { },
     }) {
         this.#secure = secure;
         this.#host = host;
@@ -47,13 +48,13 @@ export class eSocketServer {
 
         this.#socket = new WebSocket(this.#url);
         this.#setState();
-        this.#socket.onopen = (evt) => {
+        this.#socket.onopen = () => {
             this.#setState();
         };
-        this.#socket.onerror = (evt) => {
+        this.#socket.onerror = () => {
             this.#setState();
         };
-        this.#socket.onclose = (evt) => {
+        this.#socket.onclose = () => {
             this.#setState();
         };
         this.#socket.onmessage = (evt) => {

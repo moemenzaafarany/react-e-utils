@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { eType } from "./type";
 import { eStr } from "./str";
 
 export class eList {
     //=======< array
-    static findIndex(array, findCondition = (index, value) => { }) {
+    static findIndex(array, findCondition = (_index, _value) => { }) {
         try {
             if (!eType.arr(array) || !eType.func(findCondition)) throw `invalid array=${eStr.from(array)}|findCondition=${eStr.from(findCondition)}`;
             for (var index in array) {
@@ -15,12 +16,12 @@ export class eList {
             return null;
         }
     }
-    static findInArr(array, findCondition = (index, value) => { }) {
+    static findInArr(array, findCondition = (_index, _value) => { }) {
         let i = eList.findIndex(array, findCondition);
         if (!i) return null;
         return array[i];
     }
-    static findAllInArr(array, findCondition = (index, value) => { }) {
+    static findAllInArr(array, findCondition = (_index, _value) => { }) {
         try {
             if (!eType.arr(array) || !eType.func(findCondition)) throw `invalid array=${eStr.from(array)}|findCondition=${eStr.from(findCondition)}`;
             let list = [];
@@ -122,7 +123,7 @@ export class eList {
             return undefined;
         }
     }
-    static arrClean(array, removeCondition = (index, value) => eType.empty(value)) {
+    static arrClean(array, removeCondition = (_index, value) => eType.empty(value)) {
         try {
             if (!eType.arr(array) && eType.func(removeCondition))
                 throw `invalid array=${eStr.from(array)}|removeCondition=${eStr.from(removeCondition)}`;
@@ -150,7 +151,7 @@ export class eList {
             return undefined;
         }
     }
-    static generateArray(length, callback = (index, array) => null) {
+    static generateArray(length, callback = (_index, _array) => null) {
         try {
             if (!eType.num(length) || !eType.func(callback)) return [];
             var array = [];
@@ -164,7 +165,7 @@ export class eList {
             return undefined;
         }
     }
-    static toArray(data, callback = (index, value, array) => null) {
+    static toArray(data, callback = (_index, _value, _array) => null) {
         try {
             if ((!eType.arr(data) && !eType.obj(data)) || !eType.func(callback)) return [];
             var array = [];
@@ -178,7 +179,7 @@ export class eList {
             return undefined;
         }
     }
-    static arrCountIf(array, condition = (key, value) => null) {
+    static arrCountIf(array, condition = (_key, _value) => null) {
         try {
             if (!eType.arr(array) || !eType.func(condition)) return 0;
             var i = 0;
@@ -237,7 +238,7 @@ export class eList {
         }
     }
     //=======< object
-    static findKey(object, findCondition = (key, value) => { }) {
+    static findKey(object, findCondition = (_key, _value) => { }) {
         try {
             if (!eType.obj(object) || !eType.func(findCondition)) throw `invalid object=${eStr.from(object)}|findCondition=${eStr.from(findCondition)}`;
             for (var key in object) {
@@ -249,12 +250,12 @@ export class eList {
             return null;
         }
     }
-    static findInObj(object, findCondition = (index, value) => { }) {
+    static findInObj(object, findCondition = (_index, _value) => { }) {
         let k = eList.findKey(object, findCondition);
         if (!k) return null;
         return object[k];
     }
-    static findAllInObj(object, findCondition = (key, value) => { }) {
+    static findAllInObj(object, findCondition = (_key, _value) => { }) {
         try {
             if (!eType.obj(object) || !eType.func(findCondition)) throw `invalid object=${eStr.from(object)}|findCondition=${eStr.from(findCondition)}`;
             let list = {}
@@ -380,7 +381,23 @@ export class eList {
             return undefined;
         }
     }
-    static toObject(data, callback = (index, value, object) => null) {
+    static generateObject(length, callback = (_index, _object) => null) {
+        try {
+            if (!eType.num(length) || !eType.func(callback)) return [];
+            var object = {};
+            for (var index = 0; index < length; index++) {
+                var v = callback(index, object);
+                if (eType.obj(v)) {
+                    object = { ...object, ...v };
+                }
+            }
+            return object;
+        } catch (err) {
+            console.trace(this?.constructor?.name, err);
+            return undefined;
+        }
+    }
+    static toObject(data, callback = (_index, _value, _object) => null) {
         try {
             if ((!eType.arr(data) && !eType.obj(data)) || !eType.func(callback)) return [];
             var object = {};
@@ -397,7 +414,7 @@ export class eList {
         }
     }
     //=======< both
-    static forEach(data, result, callback = (key, value, result) => null) {
+    static forEach(data, result, callback = (_key, _value, _result) => null) {
         try {
             if ((!eType.arr(data) && !eType.obj(data)) || !eType.func(callback)) return [];
             for (var k in data) {
@@ -412,9 +429,9 @@ export class eList {
     static crawl(array, keys, fallback = undefined) {
         try {
             if (!eType.multi(array, [eType.arr, eType.obj]) && !eType.arr(keys)) return fallback;
-            var v = array.hasOwnProperty(keys[0]) ? array[keys[0]] : null;
+            var v = Object.prototype.hasOwnProperty.call(array, keys[0]) ? array[keys[0]] : null;
             for (var i = 1; i < keys.length; i++) {
-                if (v && v.hasOwnProperty(keys[i])) {
+                if (v && Object.prototype.hasOwnProperty.call(v, keys[i])) {
                     v = v[keys[i]];
                 } else v = null;
             }

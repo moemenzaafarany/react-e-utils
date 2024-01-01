@@ -7,6 +7,7 @@ exports.CookieState = CookieState;
 exports.LocaleStorageState = LocaleStorageState;
 exports.SessionStorageState = SessionStorageState;
 var _react = require("react");
+var _storage = require("../js/storage");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -23,7 +24,7 @@ function CookieState(name) {
   var key = "c:".concat(name);
   var _useState = (0, _react.useState)(function () {
       var _eCookie$get;
-      return (_eCookie$get = eCookie.get(key)) !== null && _eCookie$get !== void 0 ? _eCookie$get : fallback;
+      return (_eCookie$get = _storage.eCookie.get(key)) !== null && _eCookie$get !== void 0 ? _eCookie$get : fallback;
     }),
     _useState2 = _slicedToArray(_useState, 2),
     getV = _useState2[0],
@@ -34,11 +35,11 @@ function CookieState(name) {
   }, [getV]);
   var save = function save(value) {
     if (value) {
-      eCookie.set(key, value, {
+      _storage.eCookie.set(key, value, {
         expireHours: expireHours
       });
     } else {
-      eCookie.del(key);
+      _storage.eCookie.del(key);
     }
   };
   return {
@@ -47,7 +48,6 @@ function CookieState(name) {
     },
     set value(value) {
       setV(value);
-      return value;
     },
     save: save
   };
@@ -60,7 +60,7 @@ function SessionStorageState(name) {
   var key = "ss:".concat(name);
   var _useState3 = (0, _react.useState)(function () {
       var _eSessionStorage$get;
-      return (_eSessionStorage$get = eSessionStorage.get(key)) !== null && _eSessionStorage$get !== void 0 ? _eSessionStorage$get : fallback;
+      return (_eSessionStorage$get = _storage.eSessionStorage.get(key)) !== null && _eSessionStorage$get !== void 0 ? _eSessionStorage$get : fallback;
     }),
     _useState4 = _slicedToArray(_useState3, 2),
     getV = _useState4[0],
@@ -71,9 +71,9 @@ function SessionStorageState(name) {
   }, [getV]);
   var save = function save(value) {
     if (value) {
-      eSessionStorage.set(key, value);
+      _storage.eSessionStorage.set(key, value);
     } else {
-      eSessionStorage.del(key);
+      _storage.eSessionStorage.del(key);
     }
   };
   return {
@@ -82,7 +82,6 @@ function SessionStorageState(name) {
     },
     set value(value) {
       setV(value);
-      return value;
     },
     save: save
   };
@@ -95,7 +94,7 @@ function LocaleStorageState(name) {
   var key = "ls:".concat(name);
   var _useState5 = (0, _react.useState)(function () {
       var _eLocaleStorage$get;
-      return (_eLocaleStorage$get = eLocaleStorage.get(key)) !== null && _eLocaleStorage$get !== void 0 ? _eLocaleStorage$get : fallback;
+      return (_eLocaleStorage$get = _storage.eLocaleStorage.get(key)) !== null && _eLocaleStorage$get !== void 0 ? _eLocaleStorage$get : fallback;
     }),
     _useState6 = _slicedToArray(_useState5, 2),
     getV = _useState6[0],
@@ -106,9 +105,9 @@ function LocaleStorageState(name) {
   }, [getV]);
   var save = function save(value) {
     if (value) {
-      eLocaleStorage.set(key, value);
+      _storage.eLocaleStorage.set(key, value);
     } else {
-      eLocaleStorage.del(key);
+      _storage.eLocaleStorage.del(key);
     }
   };
   return {
@@ -117,7 +116,6 @@ function LocaleStorageState(name) {
     },
     set value(value) {
       setV(value);
-      return value;
     },
     save: save
   };

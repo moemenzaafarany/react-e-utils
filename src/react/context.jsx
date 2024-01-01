@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 import { eTranslation } from "../js/translation";
 import { eType } from "../js/type";
 import { State } from "./state";
+import PropTypes from "prop-types";
 
 //==============================< Context
 export const Context = (func = () => {}) => {
@@ -18,6 +19,9 @@ export const Context = (func = () => {}) => {
   };
   const Provider = ({ children }) => {
     return <CTX.Provider value={func()}>{children}</CTX.Provider>;
+  };
+  Provider.propTypes = {
+    children: PropTypes.element.isRequired,
   };
   const Consumer = (child = () => {}) => {
     return <CTX.Consumer>{child}</CTX.Consumer>;
@@ -96,4 +100,7 @@ export const MultiProviders = ({
 };
 const MultiProvidersChild = ({ children }) => {
   return <>{children}</>;
+};
+MultiProvidersChild.propTypes = {
+  children: PropTypes.element.isRequired,
 };

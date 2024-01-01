@@ -8,7 +8,6 @@ export const State = (initValue) => {
     },
     set value(value) {
       setV(value);
-      return value;
     },
   };
 };
@@ -46,14 +45,12 @@ export function AsyncState(func = async () => null, autoRun = false) {
     },
     set value(value) {
       setV(value);
-      return value;
     },
     get waiting() {
       return getW;
     },
     set waiting(value) {
       getW(value);
-      return value;
     },
     run: run,
   };

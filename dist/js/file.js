@@ -48,16 +48,14 @@ var eFile = exports.eFile = /*#__PURE__*/function () {
       return new Promise(function (resolve, reject) {
         try {
           if (!_type.eType.file(file)) throw "invalid file=".concat(_str.eStr.from(file));
-          return new Promise(function (resolve, reject) {
-            var reader = new FileReader();
-            reader.readAsArrayBuffer(file);
-            reader.onload = function () {
-              return resolve(reader.result);
-            };
-            reader.onerror = function (error) {
-              return reject(error);
-            };
-          });
+          var reader = new FileReader();
+          reader.readAsArrayBuffer(file);
+          reader.onload = function () {
+            return resolve(reader.result);
+          };
+          reader.onerror = function (error) {
+            return reject(error);
+          };
         } catch (err) {
           var _this2$constructor;
           console.trace(_this2 === null || _this2 === void 0 || (_this2$constructor = _this2.constructor) === null || _this2$constructor === void 0 ? void 0 : _this2$constructor.name, err);
@@ -153,8 +151,8 @@ var eFile = exports.eFile = /*#__PURE__*/function () {
       var _this5 = this;
       var customRowDelimiter = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
       var customColumnDelimiter = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
-      return new Promise( /*#__PURE__*/function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(resolve, reject) {
+      return new Promise(function (resolve, reject) {
+        _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
           var extension, keys, data, fileData, workbook, k, hasData, k2, _customRowDelimiter, _customColumnDelimite, rows, i, column, arr, i2, _this5$constructor;
           return _regeneratorRuntime().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
@@ -244,11 +242,8 @@ var eFile = exports.eFile = /*#__PURE__*/function () {
                 return _context.stop();
             }
           }, _callee, null, [[0, 20]]);
-        }));
-        return function (_x, _x2) {
-          return _ref.apply(this, arguments);
-        };
-      }());
+        }))();
+      });
     }
 
     //========< getImage async
@@ -287,7 +282,7 @@ var eFile = exports.eFile = /*#__PURE__*/function () {
           }
         }, _callee2, this, [[0, 12]]);
       }));
-      function getImageFromFile(_x3) {
+      function getImageFromFile(_x) {
         return _getImageFromFile.apply(this, arguments);
       }
       return getImageFromFile;
@@ -301,10 +296,10 @@ var eFile = exports.eFile = /*#__PURE__*/function () {
             case 0:
               return _context3.abrupt("return", new Promise(function (resolve, reject) {
                 var image = new Image();
-                image.onload = function (evt) {
+                image.onload = function () {
                   return resolve(image);
                 };
-                image.onerror = function (evt) {
+                image.onerror = function () {
                   return reject("error loading image");
                 };
                 image.src = url;
@@ -315,7 +310,7 @@ var eFile = exports.eFile = /*#__PURE__*/function () {
           }
         }, _callee3);
       }));
-      function getImageFromUrl(_x4) {
+      function getImageFromUrl(_x2) {
         return _getImageFromUrl.apply(this, arguments);
       }
       return getImageFromUrl;

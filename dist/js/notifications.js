@@ -45,8 +45,8 @@ var eNotification = exports.eNotification = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
-                var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(resolve) {
+              return _context2.abrupt("return", new Promise(function (resolve) {
+                _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
                   var p, _this$constructor;
                   return _regeneratorRuntime().wrap(function _callee$(_context) {
                     while (1) switch (_context.prev = _context.next) {
@@ -75,11 +75,8 @@ var eNotification = exports.eNotification = /*#__PURE__*/function () {
                         return _context.stop();
                     }
                   }, _callee, null, [[0, 9]]);
-                }));
-                return function (_x) {
-                  return _ref.apply(this, arguments);
-                };
-              }()));
+                }))();
+              }));
             case 1:
             case "end":
               return _context2.stop();
@@ -100,36 +97,31 @@ var eNotification = exports.eNotification = /*#__PURE__*/function () {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
               if (!eNotification.denied && !eNotification.permitted) {
-                _dom.eDom.listenEvent(document, 'click', /*#__PURE__*/function () {
-                  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(evt) {
-                    var _this2$constructor;
-                    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-                      while (1) switch (_context3.prev = _context3.next) {
-                        case 0:
-                          _context3.prev = 0;
-                          if (!eNotification.supported) {
-                            _context3.next = 4;
-                            break;
-                          }
+                _dom.eDom.listenEvent(document, 'click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+                  var _this2$constructor;
+                  return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+                    while (1) switch (_context3.prev = _context3.next) {
+                      case 0:
+                        _context3.prev = 0;
+                        if (!eNotification.supported) {
                           _context3.next = 4;
-                          return Notification.requestPermission();
-                        case 4:
-                          _context3.next = 9;
                           break;
-                        case 6:
-                          _context3.prev = 6;
-                          _context3.t0 = _context3["catch"](0);
-                          console.trace(_this2 === null || _this2 === void 0 || (_this2$constructor = _this2.constructor) === null || _this2$constructor === void 0 ? void 0 : _this2$constructor.name, _context3.t0);
-                        case 9:
-                        case "end":
-                          return _context3.stop();
-                      }
-                    }, _callee3, null, [[0, 6]]);
-                  }));
-                  return function (_x2) {
-                    return _ref2.apply(this, arguments);
-                  };
-                }(), {
+                        }
+                        _context3.next = 4;
+                        return Notification.requestPermission();
+                      case 4:
+                        _context3.next = 9;
+                        break;
+                      case 6:
+                        _context3.prev = 6;
+                        _context3.t0 = _context3["catch"](0);
+                        console.trace(_this2 === null || _this2 === void 0 || (_this2$constructor = _this2.constructor) === null || _this2$constructor === void 0 ? void 0 : _this2$constructor.name, _context3.t0);
+                      case 9:
+                      case "end":
+                        return _context3.stop();
+                    }
+                  }, _callee3, null, [[0, 6]]);
+                })), {
                   preventDefault: true,
                   capture: true,
                   once: true
@@ -241,7 +233,7 @@ var eNotification = exports.eNotification = /*#__PURE__*/function () {
           }
         }, _callee5, this, [[1, 19]]);
       }));
-      function notify(_x3, _x4) {
+      function notify(_x, _x2) {
         return _notify.apply(this, arguments);
       }
       return notify;

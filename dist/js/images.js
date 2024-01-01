@@ -609,10 +609,10 @@ var eImageEditor = exports.eImageEditor = /*#__PURE__*/function () {
             case 0:
               return _context20.abrupt("return", new Promise(function (resolve, reject) {
                 var image = new Image();
-                image.onload = function (evt) {
+                image.onload = function () {
                   return resolve(image);
                 };
-                image.onerror = function (evt) {
+                image.onerror = function () {
                   return reject("error loading image");
                 };
                 image.src = url;
@@ -641,7 +641,7 @@ function _getSourceBlob3() {
     return _regeneratorRuntime().wrap(function _callee21$(_context22) {
       while (1) switch (_context22.prev = _context22.next) {
         case 0:
-          return _context22.abrupt("return", new Promise(function (resolve, reject) {
+          return _context22.abrupt("return", new Promise(function (resolve) {
             _classPrivateFieldGet(_this, _canvas).width = _classPrivateFieldGet(_this, _source).width;
             _classPrivateFieldGet(_this, _canvas).height = _classPrivateFieldGet(_this, _source).height;
             _classPrivateFieldGet(_this, _context).globalCompositeOperation = "source-over";

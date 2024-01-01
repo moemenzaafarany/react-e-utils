@@ -1,5 +1,5 @@
 import { State, AsyncState } from "./state";
-import { Ref } from "./ref";
+import { Ref, RefState } from "./ref";
 import {
   CookieState,
   SessionStorageState,
@@ -11,6 +11,7 @@ export const eUse = {
   State,
   AsyncState,
   Ref,
+  RefState,
   CookieState,
   SessionStorageState,
   LocaleStorageState,

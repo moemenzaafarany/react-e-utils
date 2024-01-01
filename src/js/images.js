@@ -91,7 +91,7 @@ export class eImageEditor {
         await this.setSource(await eImageEditor.getImageFromUrl(url));
     }
     async #getSourceBlob() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.#canvas.width = this.#source.width;
             this.#canvas.height = this.#source.height;
             this.#context.globalCompositeOperation = "source-over";
@@ -275,8 +275,8 @@ export class eImageEditor {
     static async getImageFromUrl(url) {
         return new Promise((resolve, reject) => {
             var image = new Image();
-            image.onload = (evt) => resolve(image);
-            image.onerror = (evt) => reject("error loading image");
+            image.onload = () => resolve(image);
+            image.onerror = () => reject("error loading image");
             image.src = url;
         });
     }

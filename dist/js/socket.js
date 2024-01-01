@@ -31,10 +31,11 @@ var _filepath = /*#__PURE__*/new WeakMap();
 var _onMessage = /*#__PURE__*/new WeakMap();
 var _onStateChange = /*#__PURE__*/new WeakMap();
 var _url = /*#__PURE__*/new WeakMap();
-var _state = /*#__PURE__*/new WeakMap();
-var _connected = /*#__PURE__*/new WeakMap();
-var _error = /*#__PURE__*/new WeakMap();
+var _state2 = /*#__PURE__*/new WeakMap();
+var _connected2 = /*#__PURE__*/new WeakMap();
+var _error2 = /*#__PURE__*/new WeakMap();
 var _setState = /*#__PURE__*/new WeakSet();
+/* eslint-disable no-unused-vars */
 var eSocketServer = exports.eSocketServer = /*#__PURE__*/function () {
   //========< public
   function eSocketServer(_ref) {
@@ -47,9 +48,9 @@ var eSocketServer = exports.eSocketServer = /*#__PURE__*/function () {
       _ref$filepath = _ref.filepath,
       filepath = _ref$filepath === void 0 ? null : _ref$filepath,
       _ref$onMessage = _ref.onMessage,
-      onMessage = _ref$onMessage === void 0 ? function (data) {} : _ref$onMessage,
+      onMessage = _ref$onMessage === void 0 ? function (_data) {} : _ref$onMessage,
       _ref$onStateChange = _ref.onStateChange,
-      onStateChange = _ref$onStateChange === void 0 ? function (state, stateText, connected, error) {} : _ref$onStateChange;
+      onStateChange = _ref$onStateChange === void 0 ? function (_state, _stateText, _connected, _error) {} : _ref$onStateChange;
     _classCallCheck(this, eSocketServer);
     _classPrivateMethodInitSpec(this, _setState);
     //========<
@@ -86,15 +87,15 @@ var eSocketServer = exports.eSocketServer = /*#__PURE__*/function () {
       value: null
     });
     //
-    _classPrivateFieldInitSpec(this, _state, {
+    _classPrivateFieldInitSpec(this, _state2, {
       writable: true,
       value: 0
     });
-    _classPrivateFieldInitSpec(this, _connected, {
+    _classPrivateFieldInitSpec(this, _connected2, {
       writable: true,
       value: false
     });
-    _classPrivateFieldInitSpec(this, _error, {
+    _classPrivateFieldInitSpec(this, _error2, {
       writable: true,
       value: null
     });
@@ -116,13 +117,13 @@ var eSocketServer = exports.eSocketServer = /*#__PURE__*/function () {
       _classPrivateFieldSet(this, _url, "".concat(_classPrivateFieldGet(this, _secure) === true ? "wss" : "ws", "://").concat(_classPrivateFieldGet(this, _host)).concat(_classPrivateFieldGet(this, _port) ? ":".concat(_classPrivateFieldGet(this, _port)) : "").concat(_classPrivateFieldGet(this, _filepath) ? "/".concat(_classPrivateFieldGet(this, _filepath)) : ""));
       _classPrivateFieldSet(this, _socket, new WebSocket(_classPrivateFieldGet(this, _url)));
       _classPrivateMethodGet(this, _setState, _setState2).call(this);
-      _classPrivateFieldGet(this, _socket).onopen = function (evt) {
+      _classPrivateFieldGet(this, _socket).onopen = function () {
         _classPrivateMethodGet(_this, _setState, _setState2).call(_this);
       };
-      _classPrivateFieldGet(this, _socket).onerror = function (evt) {
+      _classPrivateFieldGet(this, _socket).onerror = function () {
         _classPrivateMethodGet(_this, _setState, _setState2).call(_this);
       };
-      _classPrivateFieldGet(this, _socket).onclose = function (evt) {
+      _classPrivateFieldGet(this, _socket).onclose = function () {
         _classPrivateMethodGet(_this, _setState, _setState2).call(_this);
       };
       _classPrivateFieldGet(this, _socket).onmessage = function (evt) {
@@ -133,14 +134,14 @@ var eSocketServer = exports.eSocketServer = /*#__PURE__*/function () {
   }, {
     key: "send",
     value: function send(data) {
-      if (_classPrivateFieldGet(this, _socket) && _classPrivateFieldGet(this, _connected)) {
+      if (_classPrivateFieldGet(this, _socket) && _classPrivateFieldGet(this, _connected2)) {
         _classPrivateFieldGet(this, _socket).send(data);
       }
     }
   }, {
     key: "close",
     value: function close() {
-      if (_classPrivateFieldGet(this, _socket) && _classPrivateFieldGet(this, _connected)) {
+      if (_classPrivateFieldGet(this, _socket) && _classPrivateFieldGet(this, _connected2)) {
         _classPrivateFieldGet(this, _socket).close();
       }
     }
@@ -149,11 +150,11 @@ var eSocketServer = exports.eSocketServer = /*#__PURE__*/function () {
 }();
 _class = eSocketServer;
 function _setState2(error) {
-  _classPrivateFieldSet(this, _state, _classPrivateFieldGet(this, _socket).readyState);
-  _classPrivateFieldSet(this, _connected, _classPrivateFieldGet(this, _state) === 1);
-  _classPrivateFieldSet(this, _error, error);
+  _classPrivateFieldSet(this, _state2, _classPrivateFieldGet(this, _socket).readyState);
+  _classPrivateFieldSet(this, _connected2, _classPrivateFieldGet(this, _state2) === 1);
+  _classPrivateFieldSet(this, _error2, error);
   //
-  if (_classPrivateFieldGet(this, _onStateChange)) _classPrivateFieldGet(this, _onStateChange).call(this, _classPrivateFieldGet(this, _state), _classStaticPrivateFieldSpecGet(_class, _class, _states)[_classPrivateFieldGet(this, _state)], _classPrivateFieldGet(this, _connected), _classPrivateFieldGet(this, _error));
+  if (_classPrivateFieldGet(this, _onStateChange)) _classPrivateFieldGet(this, _onStateChange).call(this, _classPrivateFieldGet(this, _state2), _classStaticPrivateFieldSpecGet(_class, _class, _states)[_classPrivateFieldGet(this, _state2)], _classPrivateFieldGet(this, _connected2), _classPrivateFieldGet(this, _error2));
 }
 //========<
 var _states = {

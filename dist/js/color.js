@@ -8,7 +8,6 @@ exports.eColor = void 0;
 var _type = require("./type");
 var _str = require("./str");
 var _num = require("./num");
-function _defineAccessor(e, r, n, t) { var c = { configurable: !0, enumerable: !0 }; return c[e] = t, Object.defineProperty(r, n, c); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -584,320 +583,461 @@ var eColor = exports.eColor = /*#__PURE__*/function () {
   }, {
     key: "colors",
     get: function get() {
-      var _ref3;
-      return _ref3 = {
-        light: eColor.parse("#eee"),
-        dark: eColor.parse("#333"),
-        black: eColor.colors.black,
-        error: eColor.colors.red,
-        warning: eColor.colors.orangered,
-        alert: eColor.colors.teal,
-        info: eColor.parse("#0066cc"),
-        success: eColor.colors.green,
+      return {
         get transparent() {
           return new eColor(255, 255, 255, 0);
+        },
+        get light() {
+          return new eColor(238, 238, 238, 0);
+        },
+        get dark() {
+          return new eColor(51, 51, 51, 0);
+        },
+        get error() {
+          return new eColor(220, 53, 69, 0);
+        },
+        get danger() {
+          return new eColor(220, 53, 69, 0);
+        },
+        get warning() {
+          return new eColor(255, 193, 7, 0);
+        },
+        get warn() {
+          return new eColor(255, 193, 7, 0);
+        },
+        get success() {
+          return new eColor(40, 167, 69, 0);
+        },
+        get alert() {
+          return new eColor(23, 162, 184, 0);
+        },
+        get info() {
+          return new eColor(23, 162, 184, 0);
+        },
+        get aliceblue() {
+          return new eColor(240, 248, 255);
+        },
+        get antiquewhite() {
+          return new eColor(250, 235, 215);
+        },
+        get aqua() {
+          return new eColor(0, 255, 255);
+        },
+        get aquamarine() {
+          return new eColor(127, 255, 212);
+        },
+        get azure() {
+          return new eColor(240, 255, 255);
+        },
+        get beige() {
+          return new eColor(245, 245, 220);
+        },
+        get bisque() {
+          return new eColor(255, 228, 196);
+        },
+        get black() {
+          return new eColor(0, 0, 0);
+        },
+        get blanchedalmond() {
+          return new eColor(255, 235, 205);
+        },
+        get blue() {
+          return new eColor(0, 0, 255);
+        },
+        get blueviolet() {
+          return new eColor(138, 43, 226);
+        },
+        get brown() {
+          return new eColor(165, 42, 42);
+        },
+        get burlywood() {
+          return new eColor(222, 184, 135);
+        },
+        get cadetblue() {
+          return new eColor(95, 158, 160);
+        },
+        get chartreuse() {
+          return new eColor(127, 255, 0);
+        },
+        get chocolate() {
+          return new eColor(210, 105, 30);
+        },
+        get coral() {
+          return new eColor(255, 127, 80);
+        },
+        get cornflowerblue() {
+          return new eColor(100, 149, 237);
+        },
+        get cornsilk() {
+          return new eColor(255, 248, 220);
+        },
+        get crimson() {
+          return new eColor(220, 20, 60);
+        },
+        get cyan() {
+          return new eColor(0, 255, 255);
+        },
+        get darkblue() {
+          return new eColor(0, 0, 139);
+        },
+        get darkcyan() {
+          return new eColor(0, 139, 139);
+        },
+        get darkgoldenrod() {
+          return new eColor(184, 134, 11);
+        },
+        get darkgray() {
+          return new eColor(169, 169, 169);
+        },
+        get darkgreen() {
+          return new eColor(0, 100, 0);
+        },
+        get darkkhaki() {
+          return new eColor(189, 183, 107);
+        },
+        get darkmagenta() {
+          return new eColor(139, 0, 139);
+        },
+        get darkolivegreen() {
+          return new eColor(85, 107, 47);
+        },
+        get darkorange() {
+          return new eColor(255, 140, 0);
+        },
+        get darkorchid() {
+          return new eColor(153, 50, 204);
+        },
+        get darkred() {
+          return new eColor(139, 0, 0);
+        },
+        get darksalmon() {
+          return new eColor(233, 150, 122);
+        },
+        get darkseagreen() {
+          return new eColor(143, 188, 143);
+        },
+        get darkslateblue() {
+          return new eColor(72, 61, 139);
+        },
+        get darkslategray() {
+          return new eColor(47, 79, 79);
+        },
+        get darkturquoise() {
+          return new eColor(0, 206, 209);
+        },
+        get darkviolet() {
+          return new eColor(148, 0, 211);
+        },
+        get deeppink() {
+          return new eColor(255, 20, 147);
+        },
+        get deepskyblue() {
+          return new eColor(0, 191, 255);
+        },
+        get dimgray() {
+          return new eColor(105, 105, 105);
+        },
+        get dodgerblue() {
+          return new eColor(30, 144, 255);
+        },
+        get firebrick() {
+          return new eColor(178, 34, 34);
+        },
+        get floralwhite() {
+          return new eColor(255, 250, 240);
+        },
+        get forestgreen() {
+          return new eColor(34, 139, 34);
+        },
+        get fuchsia() {
+          return new eColor(255, 0, 255);
+        },
+        get gainsboro() {
+          return new eColor(220, 220, 220);
+        },
+        get ghostwhite() {
+          return new eColor(248, 248, 255);
+        },
+        get gold() {
+          return new eColor(255, 215, 0);
+        },
+        get goldenrod() {
+          return new eColor(218, 165, 32);
+        },
+        get gray() {
+          return new eColor(128, 128, 128);
+        },
+        get green() {
+          return new eColor(0, 128, 0);
+        },
+        get greenyellow() {
+          return new eColor(173, 255, 47);
+        },
+        get honeydew() {
+          return new eColor(240, 255, 240);
+        },
+        get hotpink() {
+          return new eColor(255, 105, 180);
+        },
+        get indianred() {
+          return new eColor(205, 92, 92);
+        },
+        get indigo() {
+          return new eColor(75, 0, 130);
+        },
+        get ivory() {
+          return new eColor(255, 255, 240);
+        },
+        get khaki() {
+          return new eColor(240, 230, 140);
+        },
+        get lavender() {
+          return new eColor(230, 230, 250);
+        },
+        get lavenderblush() {
+          return new eColor(255, 240, 245);
+        },
+        get lawngreen() {
+          return new eColor(124, 252, 0);
+        },
+        get lemonchiffon() {
+          return new eColor(255, 250, 205);
+        },
+        get lightblue() {
+          return new eColor(173, 216, 230);
+        },
+        get lightcoral() {
+          return new eColor(240, 128, 128);
+        },
+        get lightcyan() {
+          return new eColor(224, 255, 255);
+        },
+        get lightgoldenrodyellow() {
+          return new eColor(250, 250, 210);
+        },
+        get lightgrey() {
+          return new eColor(211, 211, 211);
+        },
+        get lightgreen() {
+          return new eColor(144, 238, 144);
+        },
+        get lightpink() {
+          return new eColor(255, 182, 193);
+        },
+        get lightsalmon() {
+          return new eColor(255, 160, 122);
+        },
+        get lightseagreen() {
+          return new eColor(32, 178, 170);
+        },
+        get lightskyblue() {
+          return new eColor(135, 206, 250);
+        },
+        get lightslategray() {
+          return new eColor(119, 136, 153);
+        },
+        get lightsteelblue() {
+          return new eColor(176, 196, 222);
+        },
+        get lightyellow() {
+          return new eColor(255, 255, 224);
+        },
+        get lime() {
+          return new eColor(0, 255, 0);
+        },
+        get limegreen() {
+          return new eColor(50, 205, 50);
+        },
+        get linen() {
+          return new eColor(250, 240, 230);
+        },
+        get magenta() {
+          return new eColor(255, 0, 255);
+        },
+        get maroon() {
+          return new eColor(128, 0, 0);
+        },
+        get mediumaquamarine() {
+          return new eColor(102, 205, 170);
+        },
+        get mediumblue() {
+          return new eColor(0, 0, 205);
+        },
+        get mediumorchid() {
+          return new eColor(186, 85, 211);
+        },
+        get mediumpurple() {
+          return new eColor(147, 112, 216);
+        },
+        get mediumseagreen() {
+          return new eColor(60, 179, 113);
+        },
+        get mediumslateblue() {
+          return new eColor(123, 104, 238);
+        },
+        get mediumspringgreen() {
+          return new eColor(0, 250, 154);
+        },
+        get mediumturquoise() {
+          return new eColor(72, 209, 204);
+        },
+        get mediumvioletred() {
+          return new eColor(199, 21, 133);
+        },
+        get midnightblue() {
+          return new eColor(25, 25, 112);
+        },
+        get mintcream() {
+          return new eColor(245, 255, 250);
+        },
+        get mistyrose() {
+          return new eColor(255, 228, 225);
+        },
+        get moccasin() {
+          return new eColor(255, 228, 181);
+        },
+        get navajowhite() {
+          return new eColor(255, 222, 173);
+        },
+        get navy() {
+          return new eColor(0, 0, 128);
+        },
+        get oldlace() {
+          return new eColor(253, 245, 230);
+        },
+        get olive() {
+          return new eColor(128, 128, 0);
+        },
+        get olivedrab() {
+          return new eColor(107, 142, 35);
+        },
+        get orange() {
+          return new eColor(255, 165, 0);
+        },
+        get orangered() {
+          return new eColor(255, 69, 0);
+        },
+        get orchid() {
+          return new eColor(218, 112, 214);
+        },
+        get palegoldenrod() {
+          return new eColor(238, 232, 170);
+        },
+        get palegreen() {
+          return new eColor(152, 251, 152);
+        },
+        get paleturquoise() {
+          return new eColor(175, 238, 238);
+        },
+        get palevioletred() {
+          return new eColor(216, 112, 147);
+        },
+        get papayawhip() {
+          return new eColor(255, 239, 213);
+        },
+        get peachpuff() {
+          return new eColor(255, 218, 185);
+        },
+        get peru() {
+          return new eColor(205, 133, 63);
+        },
+        get pink() {
+          return new eColor(255, 192, 203);
+        },
+        get plum() {
+          return new eColor(221, 160, 221);
+        },
+        get powderblue() {
+          return new eColor(176, 224, 230);
+        },
+        get purple() {
+          return new eColor(128, 0, 128);
+        },
+        get rebeccapurple() {
+          return new eColor(102, 51, 153);
+        },
+        get red() {
+          return new eColor(255, 0, 0);
+        },
+        get rosybrown() {
+          return new eColor(188, 143, 143);
+        },
+        get royalblue() {
+          return new eColor(65, 105, 225);
+        },
+        get saddlebrown() {
+          return new eColor(139, 69, 19);
+        },
+        get salmon() {
+          return new eColor(250, 128, 114);
+        },
+        get sandybrown() {
+          return new eColor(244, 164, 96);
+        },
+        get seagreen() {
+          return new eColor(46, 139, 87);
+        },
+        get seashell() {
+          return new eColor(255, 245, 238);
+        },
+        get sienna() {
+          return new eColor(160, 82, 45);
+        },
+        get silver() {
+          return new eColor(192, 192, 192);
+        },
+        get skyblue() {
+          return new eColor(135, 206, 235);
+        },
+        get slateblue() {
+          return new eColor(106, 90, 205);
+        },
+        get slategray() {
+          return new eColor(112, 128, 144);
+        },
+        get snow() {
+          return new eColor(255, 250, 250);
+        },
+        get springgreen() {
+          return new eColor(0, 255, 127);
+        },
+        get steelblue() {
+          return new eColor(70, 130, 180);
+        },
+        get tan() {
+          return new eColor(210, 180, 140);
+        },
+        get teal() {
+          return new eColor(0, 128, 128);
+        },
+        get thistle() {
+          return new eColor(216, 191, 216);
+        },
+        get tomato() {
+          return new eColor(255, 99, 71);
+        },
+        get turquoise() {
+          return new eColor(64, 224, 208);
+        },
+        get violet() {
+          return new eColor(238, 130, 238);
+        },
+        get wheat() {
+          return new eColor(245, 222, 179);
+        },
+        get white() {
+          return new eColor(255, 255, 255);
+        },
+        get whitesmoke() {
+          return new eColor(245, 245, 245);
+        },
+        get yellow() {
+          return new eColor(255, 255, 0);
+        },
+        get yellowgreen() {
+          return new eColor(154, 205, 50);
         }
-      }, _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "light", function () {
-        return new eColor(238, 238, 238, 0);
-      }), "dark", function () {
-        return new eColor(51, 51, 51, 0);
-      }), "error", function () {
-        return new eColor(220, 53, 69, 0);
-      }), "danger", function () {
-        return new eColor(220, 53, 69, 0);
-      }), "warning", function () {
-        return new eColor(255, 193, 7, 0);
-      }), "warn", function () {
-        return new eColor(255, 193, 7, 0);
-      }), "success", function () {
-        return new eColor(40, 167, 69, 0);
-      }), "alert", function () {
-        return new eColor(23, 162, 184, 0);
-      }), "info", function () {
-        return new eColor(23, 162, 184, 0);
-      }), "aliceblue", function () {
-        return new eColor(240, 248, 255);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "antiquewhite", function () {
-        return new eColor(250, 235, 215);
-      }), "aqua", function () {
-        return new eColor(0, 255, 255);
-      }), "aquamarine", function () {
-        return new eColor(127, 255, 212);
-      }), "azure", function () {
-        return new eColor(240, 255, 255);
-      }), "beige", function () {
-        return new eColor(245, 245, 220);
-      }), "bisque", function () {
-        return new eColor(255, 228, 196);
-      }), "black", function () {
-        return new eColor(0, 0, 0);
-      }), "blanchedalmond", function () {
-        return new eColor(255, 235, 205);
-      }), "blue", function () {
-        return new eColor(0, 0, 255);
-      }), "blueviolet", function () {
-        return new eColor(138, 43, 226);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "brown", function () {
-        return new eColor(165, 42, 42);
-      }), "burlywood", function () {
-        return new eColor(222, 184, 135);
-      }), "cadetblue", function () {
-        return new eColor(95, 158, 160);
-      }), "chartreuse", function () {
-        return new eColor(127, 255, 0);
-      }), "chocolate", function () {
-        return new eColor(210, 105, 30);
-      }), "coral", function () {
-        return new eColor(255, 127, 80);
-      }), "cornflowerblue", function () {
-        return new eColor(100, 149, 237);
-      }), "cornsilk", function () {
-        return new eColor(255, 248, 220);
-      }), "crimson", function () {
-        return new eColor(220, 20, 60);
-      }), "cyan", function () {
-        return new eColor(0, 255, 255);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "darkblue", function () {
-        return new eColor(0, 0, 139);
-      }), "darkcyan", function () {
-        return new eColor(0, 139, 139);
-      }), "darkgoldenrod", function () {
-        return new eColor(184, 134, 11);
-      }), "darkgray", function () {
-        return new eColor(169, 169, 169);
-      }), "darkgreen", function () {
-        return new eColor(0, 100, 0);
-      }), "darkkhaki", function () {
-        return new eColor(189, 183, 107);
-      }), "darkmagenta", function () {
-        return new eColor(139, 0, 139);
-      }), "darkolivegreen", function () {
-        return new eColor(85, 107, 47);
-      }), "darkorange", function () {
-        return new eColor(255, 140, 0);
-      }), "darkorchid", function () {
-        return new eColor(153, 50, 204);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "darkred", function () {
-        return new eColor(139, 0, 0);
-      }), "darksalmon", function () {
-        return new eColor(233, 150, 122);
-      }), "darkseagreen", function () {
-        return new eColor(143, 188, 143);
-      }), "darkslateblue", function () {
-        return new eColor(72, 61, 139);
-      }), "darkslategray", function () {
-        return new eColor(47, 79, 79);
-      }), "darkturquoise", function () {
-        return new eColor(0, 206, 209);
-      }), "darkviolet", function () {
-        return new eColor(148, 0, 211);
-      }), "deeppink", function () {
-        return new eColor(255, 20, 147);
-      }), "deepskyblue", function () {
-        return new eColor(0, 191, 255);
-      }), "dimgray", function () {
-        return new eColor(105, 105, 105);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "dodgerblue", function () {
-        return new eColor(30, 144, 255);
-      }), "firebrick", function () {
-        return new eColor(178, 34, 34);
-      }), "floralwhite", function () {
-        return new eColor(255, 250, 240);
-      }), "forestgreen", function () {
-        return new eColor(34, 139, 34);
-      }), "fuchsia", function () {
-        return new eColor(255, 0, 255);
-      }), "gainsboro", function () {
-        return new eColor(220, 220, 220);
-      }), "ghostwhite", function () {
-        return new eColor(248, 248, 255);
-      }), "gold", function () {
-        return new eColor(255, 215, 0);
-      }), "goldenrod", function () {
-        return new eColor(218, 165, 32);
-      }), "gray", function () {
-        return new eColor(128, 128, 128);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "green", function () {
-        return new eColor(0, 128, 0);
-      }), "greenyellow", function () {
-        return new eColor(173, 255, 47);
-      }), "honeydew", function () {
-        return new eColor(240, 255, 240);
-      }), "hotpink", function () {
-        return new eColor(255, 105, 180);
-      }), "indianred", function () {
-        return new eColor(205, 92, 92);
-      }), "indigo", function () {
-        return new eColor(75, 0, 130);
-      }), "ivory", function () {
-        return new eColor(255, 255, 240);
-      }), "khaki", function () {
-        return new eColor(240, 230, 140);
-      }), "lavender", function () {
-        return new eColor(230, 230, 250);
-      }), "lavenderblush", function () {
-        return new eColor(255, 240, 245);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "lawngreen", function () {
-        return new eColor(124, 252, 0);
-      }), "lemonchiffon", function () {
-        return new eColor(255, 250, 205);
-      }), "lightblue", function () {
-        return new eColor(173, 216, 230);
-      }), "lightcoral", function () {
-        return new eColor(240, 128, 128);
-      }), "lightcyan", function () {
-        return new eColor(224, 255, 255);
-      }), "lightgoldenrodyellow", function () {
-        return new eColor(250, 250, 210);
-      }), "lightgrey", function () {
-        return new eColor(211, 211, 211);
-      }), "lightgreen", function () {
-        return new eColor(144, 238, 144);
-      }), "lightpink", function () {
-        return new eColor(255, 182, 193);
-      }), "lightsalmon", function () {
-        return new eColor(255, 160, 122);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "lightseagreen", function () {
-        return new eColor(32, 178, 170);
-      }), "lightskyblue", function () {
-        return new eColor(135, 206, 250);
-      }), "lightslategray", function () {
-        return new eColor(119, 136, 153);
-      }), "lightsteelblue", function () {
-        return new eColor(176, 196, 222);
-      }), "lightyellow", function () {
-        return new eColor(255, 255, 224);
-      }), "lime", function () {
-        return new eColor(0, 255, 0);
-      }), "limegreen", function () {
-        return new eColor(50, 205, 50);
-      }), "linen", function () {
-        return new eColor(250, 240, 230);
-      }), "magenta", function () {
-        return new eColor(255, 0, 255);
-      }), "maroon", function () {
-        return new eColor(128, 0, 0);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "mediumaquamarine", function () {
-        return new eColor(102, 205, 170);
-      }), "mediumblue", function () {
-        return new eColor(0, 0, 205);
-      }), "mediumorchid", function () {
-        return new eColor(186, 85, 211);
-      }), "mediumpurple", function () {
-        return new eColor(147, 112, 216);
-      }), "mediumseagreen", function () {
-        return new eColor(60, 179, 113);
-      }), "mediumslateblue", function () {
-        return new eColor(123, 104, 238);
-      }), "mediumspringgreen", function () {
-        return new eColor(0, 250, 154);
-      }), "mediumturquoise", function () {
-        return new eColor(72, 209, 204);
-      }), "mediumvioletred", function () {
-        return new eColor(199, 21, 133);
-      }), "midnightblue", function () {
-        return new eColor(25, 25, 112);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "mintcream", function () {
-        return new eColor(245, 255, 250);
-      }), "mistyrose", function () {
-        return new eColor(255, 228, 225);
-      }), "moccasin", function () {
-        return new eColor(255, 228, 181);
-      }), "navajowhite", function () {
-        return new eColor(255, 222, 173);
-      }), "navy", function () {
-        return new eColor(0, 0, 128);
-      }), "oldlace", function () {
-        return new eColor(253, 245, 230);
-      }), "olive", function () {
-        return new eColor(128, 128, 0);
-      }), "olivedrab", function () {
-        return new eColor(107, 142, 35);
-      }), "orange", function () {
-        return new eColor(255, 165, 0);
-      }), "orangered", function () {
-        return new eColor(255, 69, 0);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "orchid", function () {
-        return new eColor(218, 112, 214);
-      }), "palegoldenrod", function () {
-        return new eColor(238, 232, 170);
-      }), "palegreen", function () {
-        return new eColor(152, 251, 152);
-      }), "paleturquoise", function () {
-        return new eColor(175, 238, 238);
-      }), "palevioletred", function () {
-        return new eColor(216, 112, 147);
-      }), "papayawhip", function () {
-        return new eColor(255, 239, 213);
-      }), "peachpuff", function () {
-        return new eColor(255, 218, 185);
-      }), "peru", function () {
-        return new eColor(205, 133, 63);
-      }), "pink", function () {
-        return new eColor(255, 192, 203);
-      }), "plum", function () {
-        return new eColor(221, 160, 221);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "powderblue", function () {
-        return new eColor(176, 224, 230);
-      }), "purple", function () {
-        return new eColor(128, 0, 128);
-      }), "rebeccapurple", function () {
-        return new eColor(102, 51, 153);
-      }), "red", function () {
-        return new eColor(255, 0, 0);
-      }), "rosybrown", function () {
-        return new eColor(188, 143, 143);
-      }), "royalblue", function () {
-        return new eColor(65, 105, 225);
-      }), "saddlebrown", function () {
-        return new eColor(139, 69, 19);
-      }), "salmon", function () {
-        return new eColor(250, 128, 114);
-      }), "sandybrown", function () {
-        return new eColor(244, 164, 96);
-      }), "seagreen", function () {
-        return new eColor(46, 139, 87);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "seashell", function () {
-        return new eColor(255, 245, 238);
-      }), "sienna", function () {
-        return new eColor(160, 82, 45);
-      }), "silver", function () {
-        return new eColor(192, 192, 192);
-      }), "skyblue", function () {
-        return new eColor(135, 206, 235);
-      }), "slateblue", function () {
-        return new eColor(106, 90, 205);
-      }), "slategray", function () {
-        return new eColor(112, 128, 144);
-      }), "snow", function () {
-        return new eColor(255, 250, 250);
-      }), "springgreen", function () {
-        return new eColor(0, 255, 127);
-      }), "steelblue", function () {
-        return new eColor(70, 130, 180);
-      }), "tan", function () {
-        return new eColor(210, 180, 140);
-      }), _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _defineAccessor("get", _ref3, "teal", function () {
-        return new eColor(0, 128, 128);
-      }), "thistle", function () {
-        return new eColor(216, 191, 216);
-      }), "tomato", function () {
-        return new eColor(255, 99, 71);
-      }), "turquoise", function () {
-        return new eColor(64, 224, 208);
-      }), "violet", function () {
-        return new eColor(238, 130, 238);
-      }), "wheat", function () {
-        return new eColor(245, 222, 179);
-      }), "white", function () {
-        return new eColor(255, 255, 255);
-      }), "whitesmoke", function () {
-        return new eColor(245, 245, 245);
-      }), "yellow", function () {
-        return new eColor(255, 255, 0);
-      }), "yellowgreen", function () {
-        return new eColor(154, 205, 50);
-      });
+      };
     }
   }]);
   return eColor;

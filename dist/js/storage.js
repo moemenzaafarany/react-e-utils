@@ -234,7 +234,7 @@ var eUrl = exports.eUrl = /*#__PURE__*/function () {
             sections[i] = "([^\\/](.*)|)";
           }
         }
-        var regex = new RegExp("^".concat(sections.join('\\/'), "$"), "i");
+        var regex = new RegExp("\\^".concat(sections.join('\\/'), "\\$"), "i");
         var hash = url.hash.slice(1);
         return hash.match(regex);
       } catch (err) {
@@ -340,7 +340,7 @@ var eCookie = exports.eCookie = /*#__PURE__*/function () {
             var str = _step3.value;
             var pair = str.trim().split("=");
             var val = pair.join("=").split("".concat(pair[0], "="))[1];
-            if (map.hasOwnProperty(pair[0])) {
+            if (Object.prototype.hasOwnProperty.call(map, pair[0])) {
               if (!_type.eType.arr(map[pair[0]])) map[pair[0]] = [map[pair[0]]];
               map[pair[0]].push(val);
             } else {

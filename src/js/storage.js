@@ -162,7 +162,7 @@ export class eUrl {
                     sections[i] = "([^\\/](.*)|)";
                 }
             }
-            let regex = new RegExp(`\^${sections.join('\\/')}\$`, "i");
+            let regex = new RegExp(`\\^${sections.join('\\/')}\\$`, "i");
             let hash = url.hash.slice(1);
             return hash.match(regex);
         } catch (err) {
@@ -236,7 +236,7 @@ export class eCookie {
                 var pair = str.trim().split("=");
                 var val = pair.join("=").split(`${pair[0]}=`)[1];
 
-                if (map.hasOwnProperty(pair[0])) {
+                if (Object.prototype.hasOwnProperty.call(map, pair[0])) {
                     if (!eType.arr(map[pair[0]])) map[pair[0]] = [map[pair[0]]];
                     map[pair[0]].push(val);
                 } else {

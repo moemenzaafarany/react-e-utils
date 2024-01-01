@@ -10,6 +10,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _translation = require("../js/translation");
 var _type = require("../js/type");
 var _state = require("./state");
+var _propTypes = _interopRequireDefault(require("prop-types"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 //==============================< Context
@@ -28,6 +30,9 @@ var Context = exports.Context = function Context() {
     return /*#__PURE__*/_react["default"].createElement(CTX.Provider, {
       value: func()
     }, children);
+  };
+  Provider.propTypes = {
+    children: _propTypes["default"].element.isRequired
   };
   var Consumer = function Consumer() {
     var child = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
@@ -115,4 +120,7 @@ var MultiProviders = exports.MultiProviders = function MultiProviders(_ref3) {
 var MultiProvidersChild = function MultiProvidersChild(_ref4) {
   var children = _ref4.children;
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, children);
+};
+MultiProvidersChild.propTypes = {
+  children: _propTypes["default"].element.isRequired
 };

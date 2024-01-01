@@ -471,17 +471,6 @@ export class eColor {
     //========< some colors
     static get colors() {
         return {
-
-
-            light: eColor.parse("#eee"),
-            dark: eColor.parse("#333"),
-            black: eColor.colors.black,
-            error: eColor.colors.red,
-            warning: eColor.colors.orangered,
-            alert: eColor.colors.teal,
-            info: eColor.parse("#0066cc"),
-            success: eColor.colors.green,
-
             get transparent() { return new eColor(255, 255, 255, 0) },
 
             get light() { return new eColor(238, 238, 238, 0) },

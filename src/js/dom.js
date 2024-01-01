@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { eType } from "./type";
 import { eStr } from "./str";
 
@@ -52,7 +53,7 @@ export class eDom {
         }
     }
     //========< events
-    static eventPreventDefault(runInstead = (event, target) => { }) {
+    static eventPreventDefault(runInstead = (_event, _target) => { }) {
         return (event) => {
             if (event?.preventDefault) event?.preventDefault();
             if (event?.stopImmediatePropagation) event?.stopImmediatePropagation();
@@ -129,7 +130,7 @@ export class eDom {
     static listenEvent(
         element,
         event = "",
-        callback = (evt, eventName) => { },
+        callback = (_evt, _eventName) => { },
         {
             preventDefault = false,
             capture = false,
@@ -231,7 +232,7 @@ export class eDom {
     //========< manipulate dom
     static appendSampleToElement(
         element, sample,
-        { outputEl = (el) => { }, sampleEl = (el) => { }, childEls = {} }
+        { outputEl = (_el) => { }, sampleEl = (_el) => { }, childEls = {} }
     ) {
         try {
             if (!eType.element(element) || !eType.element(sample)) throw `invalid element=${eStr.from(element)}|sample=${eStr.from(element)}`;
@@ -248,7 +249,7 @@ export class eDom {
             return undefined;
         }
     }
-    static populateElement(element, { parentEl = (el) => { }, childEls = {} }) {
+    static populateElement(element, { parentEl = (_el) => { }, childEls = {} }) {
         try {
             if (!eType.element(element)) throw `invalid element=${eStr.from(element)}`;
             if (parentEl) {
@@ -373,7 +374,7 @@ export class eDom {
             if (!eType.arr(props)) props = [props];
             let match = true;
             for (let val of props) {
-                if (!element.hasOwnProperty(val)) match = false
+                if (!Object.prototype.hasOwnProperty.call(element, val)) match = false
             }
             return match;
         } catch (err) {
@@ -423,7 +424,7 @@ export class eDom {
             if (!eType.arr(datasets)) datasets = [datasets];
             let match = true;
             for (let val of datasets) {
-                if (!element.dataset.hasOwnProperty(val)) match = false
+                if (!Object.prototype.hasOwnProperty.call(element.dataset, val)) match = false
             }
             return match;
         } catch (err) {
@@ -510,7 +511,7 @@ export class eDom {
         try {
             if (!eType.element(element) && !eType.obj(styles)) throw `invalid element=${eStr.from(element)}|styles=${eStr.from(styles)}`;
             for (let key in styles) {
-                if (element.style.hasOwnProperty(key)) element.style[key] = styles[key];
+                if (Object.prototype.hasOwnProperty.call(element.style, key)) element.style[key] = styles[key];
                 else element.style.setProperty(key, styles[key]);
             }
             return true;

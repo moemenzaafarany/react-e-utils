@@ -17,7 +17,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); } /* eslint-disable no-unused-vars */
 var eList = exports.eList = /*#__PURE__*/function () {
   function eList() {
     _classCallCheck(this, eList);
@@ -27,7 +27,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
     value:
     //=======< array
     function findIndex(array) {
-      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (index, value) {};
+      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_index, _value) {};
       try {
         if (!_type.eType.arr(array) || !_type.eType.func(findCondition)) throw "invalid array=".concat(_str.eStr.from(array), "|findCondition=").concat(_str.eStr.from(findCondition));
         for (var index in array) {
@@ -43,7 +43,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "findInArr",
     value: function findInArr(array) {
-      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (index, value) {};
+      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_index, _value) {};
       var i = eList.findIndex(array, findCondition);
       if (!i) return null;
       return array[i];
@@ -51,7 +51,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "findAllInArr",
     value: function findAllInArr(array) {
-      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (index, value) {};
+      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_index, _value) {};
       try {
         if (!_type.eType.arr(array) || !_type.eType.func(findCondition)) throw "invalid array=".concat(_str.eStr.from(array), "|findCondition=").concat(_str.eStr.from(findCondition));
         var list = [];
@@ -187,7 +187,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "arrClean",
     value: function arrClean(array) {
-      var removeCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (index, value) {
+      var removeCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_index, value) {
         return _type.eType.empty(value);
       };
       try {
@@ -232,7 +232,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "generateArray",
     value: function generateArray(length) {
-      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (index, array) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_index, _array) {
         return null;
       };
       try {
@@ -252,7 +252,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "toArray",
     value: function toArray(data) {
-      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (index, value, array) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_index, _value, _array) {
         return null;
       };
       try {
@@ -272,7 +272,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "arrCountIf",
     value: function arrCountIf(array) {
-      var condition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (key, value) {
+      var condition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_key, _value) {
         return null;
       };
       try {
@@ -338,7 +338,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "findKey",
     value: function findKey(object) {
-      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (key, value) {};
+      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_key, _value) {};
       try {
         if (!_type.eType.obj(object) || !_type.eType.func(findCondition)) throw "invalid object=".concat(_str.eStr.from(object), "|findCondition=").concat(_str.eStr.from(findCondition));
         for (var key in object) {
@@ -354,7 +354,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "findInObj",
     value: function findInObj(object) {
-      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (index, value) {};
+      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_index, _value) {};
       var k = eList.findKey(object, findCondition);
       if (!k) return null;
       return object[k];
@@ -362,7 +362,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "findAllInObj",
     value: function findAllInObj(object) {
-      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (key, value) {};
+      var findCondition = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_key, _value) {};
       try {
         if (!_type.eType.obj(object) || !_type.eType.func(findCondition)) throw "invalid object=".concat(_str.eStr.from(object), "|findCondition=").concat(_str.eStr.from(findCondition));
         var list = {};
@@ -543,9 +543,31 @@ var eList = exports.eList = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "generateObject",
+    value: function generateObject(length) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_index, _object) {
+        return null;
+      };
+      try {
+        if (!_type.eType.num(length) || !_type.eType.func(callback)) return [];
+        var object = {};
+        for (var index = 0; index < length; index++) {
+          var v = callback(index, object);
+          if (_type.eType.obj(v)) {
+            object = _objectSpread(_objectSpread({}, object), v);
+          }
+        }
+        return object;
+      } catch (err) {
+        var _this$constructor25;
+        console.trace(this === null || this === void 0 || (_this$constructor25 = this.constructor) === null || _this$constructor25 === void 0 ? void 0 : _this$constructor25.name, err);
+        return undefined;
+      }
+    }
+  }, {
     key: "toObject",
     value: function toObject(data) {
-      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (index, value, object) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_index, _value, _object) {
         return null;
       };
       try {
@@ -559,8 +581,8 @@ var eList = exports.eList = /*#__PURE__*/function () {
         }
         return object;
       } catch (err) {
-        var _this$constructor25;
-        console.trace(this === null || this === void 0 || (_this$constructor25 = this.constructor) === null || _this$constructor25 === void 0 ? void 0 : _this$constructor25.name, err);
+        var _this$constructor26;
+        console.trace(this === null || this === void 0 || (_this$constructor26 = this.constructor) === null || _this$constructor26 === void 0 ? void 0 : _this$constructor26.name, err);
         return undefined;
       }
     }
@@ -568,7 +590,7 @@ var eList = exports.eList = /*#__PURE__*/function () {
   }, {
     key: "forEach",
     value: function forEach(data, result) {
-      var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (key, value, result) {
+      var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (_key, _value, _result) {
         return null;
       };
       try {
@@ -578,8 +600,8 @@ var eList = exports.eList = /*#__PURE__*/function () {
         }
         return result;
       } catch (err) {
-        var _this$constructor26;
-        console.trace(this === null || this === void 0 || (_this$constructor26 = this.constructor) === null || _this$constructor26 === void 0 ? void 0 : _this$constructor26.name, err);
+        var _this$constructor27;
+        console.trace(this === null || this === void 0 || (_this$constructor27 = this.constructor) === null || _this$constructor27 === void 0 ? void 0 : _this$constructor27.name, err);
         return undefined;
       }
     }
@@ -589,16 +611,16 @@ var eList = exports.eList = /*#__PURE__*/function () {
       var fallback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
       try {
         if (!_type.eType.multi(array, [_type.eType.arr, _type.eType.obj]) && !_type.eType.arr(keys)) return fallback;
-        var v = array.hasOwnProperty(keys[0]) ? array[keys[0]] : null;
+        var v = Object.prototype.hasOwnProperty.call(array, keys[0]) ? array[keys[0]] : null;
         for (var i = 1; i < keys.length; i++) {
-          if (v && v.hasOwnProperty(keys[i])) {
+          if (v && Object.prototype.hasOwnProperty.call(v, keys[i])) {
             v = v[keys[i]];
           } else v = null;
         }
         return !_type.eType["null"](v) ? v : fallback;
       } catch (err) {
-        var _this$constructor27;
-        console.trace(this === null || this === void 0 || (_this$constructor27 = this.constructor) === null || _this$constructor27 === void 0 ? void 0 : _this$constructor27.name, err);
+        var _this$constructor28;
+        console.trace(this === null || this === void 0 || (_this$constructor28 = this.constructor) === null || _this$constructor28 === void 0 ? void 0 : _this$constructor28.name, err);
         return undefined;
       }
     }

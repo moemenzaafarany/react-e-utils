@@ -18,10 +18,9 @@ import { eImageEditor } from "./js/images";
 import { eTranslation, eLocale } from "./js/translation";
 import {
   eGetBrowser,
-  eGetDeviceType,
   eStopConsole,
-  switchIf,
-  multiIf,
+  eSwitchIf,
+  eMultiIf,
 } from "./js/misc";
 export {
   eType,
@@ -50,10 +49,9 @@ export {
   eTranslation,
   eLocale,
   eGetBrowser,
-  eGetDeviceType,
   eStopConsole,
-  switchIf,
-  multiIf,
+  eSwitchIf,
+  eMultiIf,
 };
 // React
 import { eUse } from "./react/use";

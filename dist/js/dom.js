@@ -14,7 +14,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); } /* eslint-disable no-unused-vars */
 var eDom = exports.eDom = /*#__PURE__*/function () {
   function eDom() {
     _classCallCheck(this, eDom);
@@ -113,7 +113,7 @@ var eDom = exports.eDom = /*#__PURE__*/function () {
   }, {
     key: "eventPreventDefault",
     value: function eventPreventDefault() {
-      var runInstead = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (event, target) {};
+      var runInstead = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (_event, _target) {};
       return function (event) {
         if (event !== null && event !== void 0 && event.preventDefault) event === null || event === void 0 || event.preventDefault();
         if (event !== null && event !== void 0 && event.stopImmediatePropagation) event === null || event === void 0 || event.stopImmediatePropagation();
@@ -194,7 +194,7 @@ var eDom = exports.eDom = /*#__PURE__*/function () {
     key: "listenEvent",
     value: function listenEvent(element) {
       var event = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-      var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (evt, eventName) {};
+      var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (_evt, _eventName) {};
       var _ref5 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {},
         _ref5$preventDefault = _ref5.preventDefault,
         preventDefault = _ref5$preventDefault === void 0 ? false : _ref5$preventDefault,
@@ -293,9 +293,9 @@ var eDom = exports.eDom = /*#__PURE__*/function () {
     key: "appendSampleToElement",
     value: function appendSampleToElement(element, sample, _ref7) {
       var _ref7$outputEl = _ref7.outputEl,
-        outputEl = _ref7$outputEl === void 0 ? function (el) {} : _ref7$outputEl,
+        outputEl = _ref7$outputEl === void 0 ? function (_el) {} : _ref7$outputEl,
         _ref7$sampleEl = _ref7.sampleEl,
-        sampleEl = _ref7$sampleEl === void 0 ? function (el) {} : _ref7$sampleEl,
+        sampleEl = _ref7$sampleEl === void 0 ? function (_el) {} : _ref7$sampleEl,
         _ref7$childEls = _ref7.childEls,
         childEls = _ref7$childEls === void 0 ? {} : _ref7$childEls;
       try {
@@ -322,7 +322,7 @@ var eDom = exports.eDom = /*#__PURE__*/function () {
     value: function populateElement(element, _ref8) {
       var _this = this;
       var _ref8$parentEl = _ref8.parentEl,
-        parentEl = _ref8$parentEl === void 0 ? function (el) {} : _ref8$parentEl,
+        parentEl = _ref8$parentEl === void 0 ? function (_el) {} : _ref8$parentEl,
         _ref8$childEls = _ref8.childEls,
         childEls = _ref8$childEls === void 0 ? {} : _ref8$childEls;
       try {
@@ -562,7 +562,7 @@ var eDom = exports.eDom = /*#__PURE__*/function () {
         try {
           for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
             var val = _step9.value;
-            if (!element.hasOwnProperty(val)) match = false;
+            if (!Object.prototype.hasOwnProperty.call(element, val)) match = false;
           }
         } catch (err) {
           _iterator9.e(err);
@@ -654,7 +654,7 @@ var eDom = exports.eDom = /*#__PURE__*/function () {
         try {
           for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
             var val = _step12.value;
-            if (!element.dataset.hasOwnProperty(val)) match = false;
+            if (!Object.prototype.hasOwnProperty.call(element.dataset, val)) match = false;
           }
         } catch (err) {
           _iterator12.e(err);
@@ -811,7 +811,7 @@ var eDom = exports.eDom = /*#__PURE__*/function () {
       try {
         if (!_type.eType.element(element) && !_type.eType.obj(styles)) throw "invalid element=".concat(_str.eStr.from(element), "|styles=").concat(_str.eStr.from(styles));
         for (var key in styles) {
-          if (element.style.hasOwnProperty(key)) element.style[key] = styles[key];else element.style.setProperty(key, styles[key]);
+          if (Object.prototype.hasOwnProperty.call(element.style, key)) element.style[key] = styles[key];else element.style.setProperty(key, styles[key]);
         }
         return true;
       } catch (err) {

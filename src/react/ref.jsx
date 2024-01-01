@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { State } from "./state";
 //==============================< Ref
 export const Ref = (initValue) => {
   const get = useRef(initValue);
@@ -8,14 +9,30 @@ export const Ref = (initValue) => {
     },
     set value(value) {
       get.current = value;
-      return get.current;
     },
     get current() {
       return get.current;
     },
     set current(value) {
       get.current = value;
-      return get.current;
+    },
+  };
+};
+
+//==============================< stateRef
+export const RefState = (initValue) => {
+  const state = State(initValue);
+  const ref = Ref(initValue);
+
+  return {
+    state,
+    ref,
+    get value() {
+      return ref.value;
+    },
+    set value(value) {
+      ref.value = value;
+      state.value = value;
     },
   };
 };

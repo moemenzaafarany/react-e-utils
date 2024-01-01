@@ -20,12 +20,10 @@ export class eFile {
         return new Promise((resolve, reject) => {
             try {
                 if (!eType.file(file)) throw `invalid file=${eStr.from(file)}`;
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.readAsArrayBuffer(file);
-                    reader.onload = () => resolve(reader.result);
-                    reader.onerror = (error) => reject(error);
-                });
+                const reader = new FileReader();
+                reader.readAsArrayBuffer(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = (error) => reject(error);
             } catch (err) {
                 console.trace(this?.constructor?.name, err);
                 return undefined;
@@ -97,67 +95,69 @@ export class eFile {
         customRowDelimiter = null,
         customColumnDelimiter = null
     ) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                if (!eType.file(file)) throw `invalid file=${eStr.from(file)}`;
-                var extension = (file.name.split(".").pop() || "").toLowerCase();
-                var keys = [];
-                var data = [];
-                var fileData;
-                if (extension === "xlsx" || extension === "xls")
-                    fileData = await eFile.getContentAsBinaryString(file);
-                else fileData = await eFile.getContentAsText(file);
-                if (!fileData) throw "file empty";
-                if ((extension === "xlsx" || extension === "xls") && XLSX) {
-                    var workbook = XLSX.read(fileData, {
-                        type: "binary",
-                    });
-                    // Here is your object
-                    data = XLSX.utils.sheet_to_json(
-                        workbook.Sheets[workbook.SheetNames[0]]
-                    );
-                    // loop data
-                    for (var k in data) {
-                        var hasData = false;
-                        // set keys
-                        for (var k2 in data[k]) {
-                            if (!keys.includes(k2)) keys.push(k2);
-                            if (!eType.empty(data[k][k2])) hasData = true;
-                        }
-                        // remove empties like formulas
-                        if (!hasData) delete data[k];
-                    }
-                    // return data
-                    resolve({
-                        keys: keys,
-                        data: data,
-                    });
-                } else {
-                    customRowDelimiter = customRowDelimiter ?? "\r\n";
-                    customColumnDelimiter =
-                        customColumnDelimiter ?? (extension === "tsv" ? "\t" : ",");
-                    var rows = fileData.split(customRowDelimiter);
-                    keys = rows[0].split(customColumnDelimiter);
-                    for (var i = 1; i < rows.length; i++) {
-                        var column = rows[i];
-                        if (column) {
-                            var arr = {};
-                            column = column.split(customColumnDelimiter);
-                            for (var i2 = 0; i2 < column.length; i2++) {
-                                arr[keys[i2]] = column[i2];
+        return new Promise((resolve, reject) => {
+            (async () => {
+                try {
+                    if (!eType.file(file)) throw `invalid file=${eStr.from(file)}`;
+                    var extension = (file.name.split(".").pop() || "").toLowerCase();
+                    var keys = [];
+                    var data = [];
+                    var fileData;
+                    if (extension === "xlsx" || extension === "xls") fileData = await eFile.getContentAsBinaryString(file);
+                    else fileData = await eFile.getContentAsText(file);
+                    if (!fileData) throw "file empty";
+                    if ((extension === "xlsx" || extension === "xls") && XLSX) {
+                        var workbook = XLSX.read(fileData, {
+                            type: "binary",
+                        });
+                        // Here is your object
+                        data = XLSX.utils.sheet_to_json(
+                            workbook.Sheets[workbook.SheetNames[0]]
+                        );
+                        // loop data
+                        for (var k in data) {
+                            var hasData = false;
+                            // set keys
+                            for (var k2 in data[k]) {
+                                if (!keys.includes(k2)) keys.push(k2);
+                                if (!eType.empty(data[k][k2])) hasData = true;
                             }
-                            data.push(arr);
+                            // remove empties like formulas
+                            if (!hasData) delete data[k];
                         }
+                        // return data
+                        resolve({
+                            keys: keys,
+                            data: data,
+                        });
+                    } else {
+                        customRowDelimiter = customRowDelimiter ?? "\r\n";
+                        customColumnDelimiter =
+                            customColumnDelimiter ?? (extension === "tsv" ? "\t" : ",");
+                        var rows = fileData.split(customRowDelimiter);
+                        keys = rows[0].split(customColumnDelimiter);
+                        for (var i = 1; i < rows.length; i++) {
+                            var column = rows[i];
+                            if (column) {
+                                var arr = {};
+                                column = column.split(customColumnDelimiter);
+                                for (var i2 = 0; i2 < column.length; i2++) {
+                                    arr[keys[i2]] = column[i2];
+                                }
+                                data.push(arr);
+                            }
+                        }
+                        resolve({
+                            keys: keys,
+                            data: data,
+                        });
                     }
-                    resolve({
-                        keys: keys,
-                        data: data,
-                    });
+                } catch (err) {
+                    console.trace(this?.constructor?.name, err);
+                    reject(undefined);
                 }
-            } catch (err) {
-                console.trace(this?.constructor?.name, err);
-                reject(undefined);
-            }
+            })()
+
         });
     }
 
@@ -176,8 +176,8 @@ export class eFile {
     static async getImageFromUrl(url) {
         return new Promise((resolve, reject) => {
             var image = new Image();
-            image.onload = (evt) => resolve(image);
-            image.onerror = (evt) => reject("error loading image");
+            image.onload = () => resolve(image);
+            image.onerror = () => reject("error loading image");
             image.src = url;
         });
     }

@@ -87,12 +87,6 @@ Object.defineProperty(exports, "eGetBrowser", {
     return _misc.eGetBrowser;
   }
 });
-Object.defineProperty(exports, "eGetDeviceType", {
-  enumerable: true,
-  get: function get() {
-    return _misc.eGetDeviceType;
-  }
-});
 Object.defineProperty(exports, "eHttpRequest", {
   enumerable: true,
   get: function get() {
@@ -121,6 +115,12 @@ Object.defineProperty(exports, "eLocaleStorage", {
   enumerable: true,
   get: function get() {
     return _storage.eLocaleStorage;
+  }
+});
+Object.defineProperty(exports, "eMultiIf", {
+  enumerable: true,
+  get: function get() {
+    return _misc.eMultiIf;
   }
 });
 Object.defineProperty(exports, "eNotification", {
@@ -177,6 +177,12 @@ Object.defineProperty(exports, "eSuccess", {
     return _res.eSuccess;
   }
 });
+Object.defineProperty(exports, "eSwitchIf", {
+  enumerable: true,
+  get: function get() {
+    return _misc.eSwitchIf;
+  }
+});
 Object.defineProperty(exports, "eTimeout", {
   enumerable: true,
   get: function get() {
@@ -223,18 +229,6 @@ Object.defineProperty(exports, "initTranslation", {
   enumerable: true,
   get: function get() {
     return _translation2.initTranslation;
-  }
-});
-Object.defineProperty(exports, "multiIf", {
-  enumerable: true,
-  get: function get() {
-    return _misc.multiIf;
-  }
-});
-Object.defineProperty(exports, "switchIf", {
-  enumerable: true,
-  get: function get() {
-    return _misc.switchIf;
   }
 });
 Object.defineProperty(exports, "useBreakpoints", {

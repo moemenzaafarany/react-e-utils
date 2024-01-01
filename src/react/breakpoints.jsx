@@ -46,11 +46,11 @@ export const BreakpointsContext = Context(() => {
     var cont = eDom.listenEvent(
       window,
       "resize",
-      (evt) => {
+      () => {
         let cs = getCurrentSize();
         if (cs !== currentSize.value) currentSize.value = cs;
         let cd = getCurrentDevice();
-        if (cd !== currentDevice.value) currentDevice.value = cs;
+        if (cd !== currentDevice.value) currentDevice.value = cd;
       },
       { capture: true }
     );

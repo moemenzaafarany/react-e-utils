@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Context } from "./context";
+import { eList } from "../../dist/js/list";
 
 // states
 export const ApiState = (
@@ -49,8 +51,6 @@ export const ApiState = (
         ...(responseType && responseType),
         ...(onBefore && onBefore),
         ...(onAfter && onAfter),
-        namespace,
-        storage,
       });
       setW(false);
       if (r.success === false) {
@@ -93,14 +93,12 @@ export const ApiState = (
     },
     set value(value) {
       setV(value);
-      return value;
     },
     get waiting() {
       return getW;
     },
     set waiting(value) {
       setW(value);
-      return value;
     },
     call: call,
     recall: () =>
@@ -149,7 +147,7 @@ export const ApiStoredState = (
   };
 
   const [getN, setN] = useState(getNamespace(namespace, bodyData));
-  const [getV, setV] = useState(ApisEB.checkStored(url, getN)?.data ?? null);
+  const [getV, setV] = useState(caller.checkStored(url, getN)?.data ?? null);
   const [getW, setW] = useState(getV === null && autoCall);
 
   const call = async ({
@@ -226,21 +224,18 @@ export const ApiStoredState = (
     },
     set value(value) {
       setV(value);
-      return value;
     },
     get waiting() {
       return getW;
     },
     set waiting(value) {
       setW(value);
-      return value;
     },
     get namespace() {
       return getN;
     },
     set namespace(value) {
       setN(value);
-      return value;
     },
     call: call,
     recall: () =>

@@ -2,6 +2,7 @@ import { eType } from "./type";
 import { eNum } from "./num";
 import { eList } from "./list";
 import { eLocaleStorage, eSessionStorage } from "./storage";
+import { eSuccess } from "./res";
 
 export class eHttpRequest {
     //========< private static
@@ -110,7 +111,7 @@ export class eHttpRequest {
                     }
                 }
                 // onloadstart
-                this.#request.onloadstart = (event) => this.#setState(1, null);
+                this.#request.onloadstart = () => this.#setState(1, null);
                 // upload onloadstart
                 this.#request.upload.onloadstart = (event) => {
                     if (this.#onStateChange) this.#uploadCalc(event.total, event.loaded);
@@ -141,17 +142,17 @@ export class eHttpRequest {
                     resolve(this);
                 };
                 // ontimeout
-                this.#request.ontimeout = (event) => {
+                this.#request.ontimeout = () => {
                     this.#setState(5, "timeout");
                     resolve(this);
                 };
                 // onabort
-                this.#request.onabort = (event) => {
+                this.#request.onabort = () => {
                     this.#setState(5, "aborted");
                     resolve(this);
                 };
                 // onerror
-                this.#request.onerror = (event) => {
+                this.#request.onerror = () => {
                     this.#setState(5, "failed");
                     resolve(this);
                 };
@@ -247,7 +248,7 @@ export class eApiCaller {
             defaultBodyData = {},
             defaultHeaders = {},
             bodyDataType = "json",
-            responseHandler = (request) => { return eSuccess(null, null) },
+            responseHandler = (_request) => { return eSuccess(null, _request) },
             responseType = "json",
             onBefore = () => { },
             onAfter = () => { },

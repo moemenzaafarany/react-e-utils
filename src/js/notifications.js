@@ -14,21 +14,23 @@ export class eNotification {
     }
     //========< permission
     static async askPermission() {
-        return new Promise(async (resolve) => {
-            try {
-                if (!eNotification.supported) return resolve(false);
-                let p = await Notification.requestPermission();
-                resolve(p === 'granted')
-            } catch (err) {
-                console.trace(this?.constructor?.name, err);
-                resolve(false);
-            }
+        return new Promise((resolve) => {
+            (async () => {
+                try {
+                    if (!eNotification.supported) return resolve(false);
+                    let p = await Notification.requestPermission();
+                    resolve(p === 'granted')
+                } catch (err) {
+                    console.trace(this?.constructor?.name, err);
+                    resolve(false);
+                }
+            })();
         });
     }
     //========< permission
     static async askPermissionOnInteract() {
         if (!eNotification.denied && !eNotification.permitted) {
-            eDom.listenEvent(document, 'click', async (evt) => {
+            eDom.listenEvent(document, 'click', async () => {
                 try {
                     if (eNotification.supported) {
                         await Notification.requestPermission();

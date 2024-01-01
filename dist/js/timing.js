@@ -21,10 +21,11 @@ var _interval = /*#__PURE__*/new WeakMap();
 var _startTime = /*#__PURE__*/new WeakMap();
 var _duration = /*#__PURE__*/new WeakMap();
 var _callback = /*#__PURE__*/new WeakMap();
+/* eslint-disable no-unused-vars */
 var eTimer = exports.eTimer = /*#__PURE__*/function () {
   function eTimer() {
     var duration = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
-    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (time) {};
+    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_time) {};
     _classCallCheck(this, eTimer);
     _classPrivateFieldInitSpec(this, _interval, {
       writable: true,
@@ -71,7 +72,7 @@ var _callback2 = /*#__PURE__*/new WeakMap();
 var eTimeout = exports.eTimeout = /*#__PURE__*/function () {
   function eTimeout() {
     var duration = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
-    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (time) {};
+    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (_time) {};
     _classCallCheck(this, eTimeout);
     _classPrivateFieldInitSpec(this, _timeout, {
       writable: true,
