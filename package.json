@@ -1,6 +1,6 @@
 {
   "name": "react-e-utils",
-  "version": "1.1.21",
+  "version": "1.1.23",
   "description": "React & JS Utilities",
   "main": "./dist/index.js",
   "repository": {
@@ -11,7 +11,7 @@
     "prepublishOnly": "npm run build"
   },
   "author": "Moemen Zaafarany",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.23.4",
     "@babel/core": "^7.23.7",
