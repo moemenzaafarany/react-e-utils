@@ -76,8 +76,7 @@ export {
   eStopConsole,
   eSwitchIf,
   eMultiIf,
-};
-export {
+
   eUseState,
   eUseAsyncState,
   eUseRef,

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { eType } from "../../dist/js/type";
+import eType from "../js/eType";
 
 const MultiProviders = ({
   providers = [{ provider: null, props: null }],

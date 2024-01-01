@@ -1,5 +1,5 @@
 import eNum from "./eNum";
-import { eStr } from "./eStr";
+import eStr from "./eStr";
 import eType from "./eType";
 
 export default class eColor {

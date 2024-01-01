@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect } from "react";
 import eUseState from "./eUseState";
-import { eList } from "../../dist/js/list";
+import eList from "../js/eList";
 
 const ApiStoredState = (
   caller,

@@ -1,6 +1,6 @@
 import eFile from "./eFile";
 import eList from "./eList";
-import { eStr } from "./eStr";
+import eStr from "./eStr";
 import eType from "./eType";
 
 export default class eImageEditor {

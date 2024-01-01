@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { eStr } from "./eStr";
+import eStr from "./eStr";
 import eType from "./eType";
 
 export default class eList {

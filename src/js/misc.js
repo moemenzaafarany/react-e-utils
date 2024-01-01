@@ -1,5 +1,5 @@
-import { eType } from "./eType";
-import { eStr } from "./eStr";
+import eType from "./eType";
+import eStr from "./eStr";
 
 export const eGetBrowser = () => {
     let userAgent = navigator.userAgent || navigator.vendor || window.opera;

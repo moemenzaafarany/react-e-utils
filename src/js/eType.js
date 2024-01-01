@@ -1,6 +1,6 @@
-import { eRes } from "./eRes";
-import { eDate } from "./eDate";
-import { eColor } from "./eColor";
+import eRes from "./eRes";
+import eDate from "./eDate";
+import eColor from "./eColor";
 
 export default class eType {
     static multi(value, types, canBeNull = false) {

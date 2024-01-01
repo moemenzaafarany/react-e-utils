@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import eDom from "./eDom";
-import { eStr } from "./eStr";
+import eStr from "./eStr";
 import eType from "./eType";
 
 export default class eOnline {

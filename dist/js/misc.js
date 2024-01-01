@@ -4,9 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.eSwitchIf = exports.eStopConsole = exports.eMultiIf = exports.eGetBrowser = void 0;
-var _eType = require("./eType");
-var _eStr = require("./eStr");
+var _eType = _interopRequireDefault(require("./eType"));
+var _eStr = _interopRequireDefault(require("./eStr"));
 var _this = void 0;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var eGetBrowser = exports.eGetBrowser = function eGetBrowser() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
   if (userAgent.match(/edg/i)) return "edge";else if (userAgent.match(/opr\//i)) return "opera";else if (userAgent.match(/safari/i)) return "safari";else if (userAgent.match(/firefox|fxios/i)) return "firefox";else if (userAgent.match(/chrome|chromium|crios/i)) return "chrome";
@@ -24,7 +25,7 @@ var eSwitchIf = exports.eSwitchIf = function eSwitchIf() {
   var cases = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ["1", "2"];
   var values = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : ["a", "b"];
   try {
-    if (!_eType.eType.arr(cases)) throw "invalid cases=".concat(_eStr.eStr.from(cases), "|values=").concat(_eStr.eStr.from(values));
+    if (!_eType["default"].arr(cases)) throw "invalid cases=".concat(_eStr["default"].from(cases), "|values=").concat(_eStr["default"].from(values));
     for (var i in cases) {
       if (value === cases[i]) return values[i];
     }
@@ -39,7 +40,7 @@ var eMultiIf = exports.eMultiIf = function eMultiIf(defaultValue) {
   var ifs = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
   var values = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   try {
-    if (!_eType.eType.arr(ifs)) throw "invalid ifs=".concat(_eStr.eStr.from(ifs), "|values=").concat(_eStr.eStr.from(values));
+    if (!_eType["default"].arr(ifs)) throw "invalid ifs=".concat(_eStr["default"].from(ifs), "|values=").concat(_eStr["default"].from(values));
     for (var i in ifs) {
       if (ifs[i]() === true) return values[i];
     }

@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 export default class eTimeout {
     #timeout = null;
     #startTime;
