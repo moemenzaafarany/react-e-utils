@@ -1,59 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
-import eType from "../js/eType";
-import {
-  eBreakpointsContext,
-  eBreakpointsProviderProps,
-} from "../models/eBreakpoints";
-import {
-  eTranslationContext,
-  eTranslationProviderProps,
-} from "../models/eTranslation";
+import eUseBreakpoints, { eBreakpointsProvider } from "../models/eBreakpoints";
+import eUseTranslation, { eTranslationProvider } from "../models/eTranslation";
 
-const MultiProvidersChild = ({ children }) => {
-  return <>{children}</>;
-};
-const MultiProviders = ({
-  contexts = [{ context: null, props: null }],
-  children,
+const MultiProvidersChild = ({
+  render,
   includeBreakpoints = false,
   includeTranslation = false,
 }) => {
+  var props = {};
+  if (includeBreakpoints) props = { ...props, ...eUseBreakpoints() };
+  if (includeTranslation) props = { ...props, ...eUseTranslation() };
+  return render(props);
+};
+const MultiProviders = ({
+  providers = [],
+  includeBreakpoints = false,
+  includeTranslation = false,
+  render,
+}) => {
   // includeBreakpoints
-  if (includeBreakpoints === true)
-    contexts.push({
-      context: eBreakpointsContext,
-      props: eBreakpointsProviderProps,
-    });
+  if (includeBreakpoints === true) providers.push(eBreakpointsProvider);
   // includeTranslation
-  if (includeTranslation === true)
-    contexts.push({
-      context: eTranslationContext,
-      props: eTranslationProviderProps,
-    });
-  // do
-  const child = <MultiProvidersChild children={children} />;
-  const providers = contexts.reverse().reduceRight((accumulated, obj) => {
-    if (eType.obj(obj)) {
-      return (
-        <obj.context.Provider {...obj.props}>
-          {accumulated}
-        </obj.context.Provider>
-      );
-    }
-    return accumulated;
-  }, child);
+  if (includeTranslation === true) providers.push(eTranslationProvider);
   // return
-  return providers;
+  return providers.reverse().reduceRight((accumulated, Provider) => {
+    return <Provider children={accumulated} />;
+  }, <MultiProvidersChild render={render} includeBreakpoints={includeBreakpoints} includeTranslation={includeTranslation} />);
 };
 MultiProviders.propTypes = {
-  contexts: PropTypes.arrayOf(
-    PropTypes.shape({
-      context: PropTypes.object,
-      props: PropTypes.object,
-    })
+  providers: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.element, PropTypes.func])
   ),
-  children: PropTypes.element.isRequired,
+  render: PropTypes.func.isRequired,
   includeTranslation: PropTypes.bool,
   includeBreakpoints: PropTypes.bool,
 };

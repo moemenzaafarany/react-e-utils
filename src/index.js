@@ -42,13 +42,13 @@ export {
   default as eUseBreakpoints,
   eInitBreakpoints,
   eBreakpointsContext,
-  eBreakpointsProviderProps
+  eBreakpointsProvider
 } from "./models/eBreakpoints";
 export {
   default as eUseTranslation,
   eInitTranslation,
   eTranslationContext,
-  eTranslationProviderProps
+  eTranslationProvider
 } from "./models/eTranslation";
 
 // components

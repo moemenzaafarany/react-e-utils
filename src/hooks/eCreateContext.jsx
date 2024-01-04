@@ -1,13 +1,16 @@
-import { createContext, useContext } from "react";
+import { createElement, createContext, useCallback, useContext } from "react";
 
-const CreateContext = (func = () => {}) => {
-  const Context = createContext({});
+const CreateContext = (value = () => {}) => {
+  const Context = createContext(undefined);
   const Use = () => {
     const ctx = useContext(Context);
     if (!ctx) {
       throw new Error("context must be within a provider!");
     }
     return ctx;
+  };
+  const Provider = ({ children }) => {
+    return createElement(Context.Provider, { value: value() }, children);
   };
   return {
     get Context() {
@@ -16,8 +19,8 @@ const CreateContext = (func = () => {}) => {
     get Use() {
       return Use;
     },
-    get ProviderProps() {
-      return { value: func() };
+    get Provider() {
+      return Provider;
     },
   };
 };

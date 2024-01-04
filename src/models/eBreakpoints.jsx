@@ -135,6 +135,6 @@ export const eInitBreakpoints = ({
   breakpoints.devices = { mobile, tablet, laptop, desktop };
 };
 export const eBreakpointsContext = eBreakpointsModel.Context;
-export const eBreakpointsProviderProps = eBreakpointsModel.ProviderProps;
+export const eBreakpointsProvider = eBreakpointsModel.Provider;
 const eUseBreakpoints = eBreakpointsModel.Use;
 export default eUseBreakpoints;

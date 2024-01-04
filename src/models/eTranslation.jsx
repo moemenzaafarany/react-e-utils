@@ -72,6 +72,6 @@ export const eInitTranslation = (
   });
 };
 export const eTranslationContext = eTranslationModel.Context;
-export const eTranslationProviderProps = eTranslationModel.ProviderProps;
+export const eTranslationProvider = eTranslationModel.Provider;
 const eUseTranslation = eTranslationModel.Use;
 export default eUseTranslation;

@@ -38,8 +38,8 @@ export { default as eCreateApiContext } from "./hooks/eCreateApiContext";
 export { default as eCreateApiStoredContext } from "./hooks/eCreateApiStoredContext";
 
 // models
-export { default as eUseBreakpoints, eInitBreakpoints, eBreakpointsContext, eBreakpointsProviderProps } from "./models/eBreakpoints";
-export { default as eUseTranslation, eInitTranslation, eTranslationContext, eTranslationProviderProps } from "./models/eTranslation";
+export { default as eUseBreakpoints, eInitBreakpoints, eBreakpointsContext, eBreakpointsProvider } from "./models/eBreakpoints";
+export { default as eUseTranslation, eInitTranslation, eTranslationContext, eTranslationProvider } from "./models/eTranslation";
 
 // components
 export { default as MultiProviders } from "./components/MultiProviders";
