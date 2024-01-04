@@ -1,8 +1,9 @@
 /* eslint-disable sort-keys */
 import { useCallback, useEffect } from "react";
-import eCreateContext from "./eCreateContext";
-import eUseState from "./eUseState";
+import eCreateContext from "../hooks/eCreateContext";
+import eUseState from "../hooks/eUseState";
 import eDom from "../js/eDom";
+import PropTypes from "prop-types";
 
 //==============================< State
 const breakpoints = {
@@ -21,8 +22,7 @@ const breakpoints = {
     desktop: 1440,
   },
 };
-
-export const eBreakpointsContext = eCreateContext(() => {
+const eBreakpointsModel = eCreateContext(() => {
   const getCurrentSize = () => {
     let size = window.innerWidth;
 
@@ -134,7 +134,7 @@ export const eInitBreakpoints = ({
   breakpoints.sizes = { xs, sm, md, lg, xl, xx };
   breakpoints.devices = { mobile, tablet, laptop, desktop };
 };
-export const eBreakpointsProvider = eBreakpointsContext.Provider;
-export const eBreakpointsConsumer = eBreakpointsContext.Consumer;
-const eUseBreakpoints = eBreakpointsContext.Use;
+export const eBreakpointsContext = eBreakpointsModel.Context;
+export const eBreakpointsProviderProps = eBreakpointsModel.ProviderProps;
+const eUseBreakpoints = eBreakpointsModel.Use;
 export default eUseBreakpoints;

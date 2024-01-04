@@ -21,31 +21,37 @@ export { default as eSocketServer } from "./js/eSocketServer";
 export { default as eNotification } from "./js/eNotification";
 export { default as eImageEditor } from "./js/eImageEditor";
 export { default as eTranslation, eLocale } from "./js/eTranslation";
+export { eGetBrowser, eStopConsole, eSwitchIf, eMultiIf } from "./js/misc";
 
-// React
-export { default as eUseState } from "./react/eUseState";
-export { default as eUseAsyncState } from "./react/eUseAsyncState";
-export { default as eUseRef } from "./react/eUseRef";
-export { default as eUseRefState } from "./react/eUseRefState";
-export { default as eUseCookieState } from "./react/eUseCookieState";
-export { default as eUseSessionStorageState } from "./react/eUseSessionStorageState";
-export { default as eUseLocaleStorageState } from "./react/eUseLocaleStorageState";
-export { default as eUseApiState } from "./react/eUseApiState";
-export { default as eUseApiStoredState } from "./react/eUseApiStoredState";
-export { default as eCreateContext } from "./react/eCreateContext";
-export { default as eCreateApiContext } from "./react/eCreateApiContext";
-export { default as eCreateApiStoredContext } from "./react/eCreateApiStoredContext";
+// hooks
+export { default as eUseState } from "./hooks/eUseState";
+export { default as eUseAsyncState } from "./hooks/eUseAsyncState";
+export { default as eUseRef } from "./hooks/eUseRef";
+export { default as eUseRefState } from "./hooks/eUseRefState";
+export { default as eUseCookieState } from "./hooks/eUseCookieState";
+export { default as eUseSessionStorageState } from "./hooks/eUseSessionStorageState";
+export { default as eUseLocaleStorageState } from "./hooks/eUseLocaleStorageState";
+export { default as eUseApiState } from "./hooks/eUseApiState";
+export { default as eUseApiStoredState } from "./hooks/eUseApiStoredState";
+export { default as eCreateContext } from "./hooks/eCreateContext";
+export { default as eCreateApiContext } from "./hooks/eCreateApiContext";
+export { default as eCreateApiStoredContext } from "./hooks/eCreateApiStoredContext";
+
+// models
 export {
   default as eUseBreakpoints,
   eInitBreakpoints,
-  eBreakpointsProvider,
-} from "./react/eBreakpoints";
+  eBreakpointsContext,
+  eBreakpointsProviderProps
+} from "./models/eBreakpoints";
 export {
   default as eUseTranslation,
   eInitTranslation,
-  eTranslationProvider,
-} from "./react/eTranslation";
+  eTranslationContext,
+  eTranslationProviderProps
+} from "./models/eTranslation";
+
+// components
 export {
   default as MultiProviders
-} from "./react/MultiProviders";
-export { eGetBrowser, eStopConsole, eSwitchIf, eMultiIf } from "./js/misc";
+} from "./components/MultiProviders";

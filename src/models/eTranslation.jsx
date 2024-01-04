@@ -1,12 +1,12 @@
 import { useCallback } from "react";
-import eCreateContext from "./eCreateContext";
-import eUseState from "./eUseState";
+import eCreateContext from "../hooks/eCreateContext";
+import eUseState from "../hooks/eUseState";
 import eTranslation from "../js/eTranslation";
 //==============================< State
 const translation = {
   instance: null,
 };
-export const eTranslationContext = eCreateContext(() => {
+const eTranslationModel = eCreateContext(() => {
   const locale = eUseState(translation?.instance?.locale.code);
   const dir = eUseState(translation?.instance?.locale.dir);
   const fonts = eUseState(translation?.instance?.locale.fonts);
@@ -71,8 +71,7 @@ export const eInitTranslation = (
     defaultLocale,
   });
 };
-export const eTranslationProvider = eTranslationContext.Provider;
-export const eTranslationConsumer = eTranslationContext.Consumer;
-
-const eUseTranslation = eTranslationContext.Use;
+export const eTranslationContext = eTranslationModel.Context;
+export const eTranslationProviderProps = eTranslationModel.ProviderProps;
+const eUseTranslation = eTranslationModel.Use;
 export default eUseTranslation;
