@@ -1,19 +1,19 @@
 import { useRef } from "react";
 
 const Ref = (initValue) => {
-  const get = useRef(initValue);
+  const ref = useRef(initValue);
   return {
     get value() {
-      return get.current;
+      return ref.current;
     },
-    set value(value) {
-      get.current = value;
+    set value(v) {
+      ref.current = v;
     },
     get current() {
-      return get.current;
+      return ref.current;
     },
-    set current(value) {
-      get.current = value;
+    set current(v) {
+      ref.current = v;
     },
   };
 };

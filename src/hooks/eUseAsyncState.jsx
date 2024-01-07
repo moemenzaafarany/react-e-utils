@@ -32,14 +32,14 @@ const AsyncState = (func = async () => null, autoRun = false) => {
     get value() {
       return value.value;
     },
-    set value(value) {
-      value.value = value;
+    set value(v) {
+      value.value = v;
     },
     get waiting() {
       return waiting.value;
     },
-    set waiting(value) {
-      waiting.value = value;
+    set waiting(v) {
+      waiting.value = v;
     },
     get run() {
       return run;

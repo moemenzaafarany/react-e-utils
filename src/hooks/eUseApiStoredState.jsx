@@ -109,20 +109,20 @@ const ApiStoredState = (
     get value() {
       return value.value;
     },
-    set value(value) {
-      value.value = value;
+    set value(v) {
+      value.value = v;
     },
     get waiting() {
       return waiting.value;
     },
-    set waiting(value) {
-      waiting.value = value;
+    set waiting(v) {
+      waiting.value = v;
     },
     get namespace() {
       return ns.value;
     },
-    set namespace(value) {
-      ns.value = value;
+    set namespace(v) {
+      ns.value = v;
     },
     get call() {
       return call;

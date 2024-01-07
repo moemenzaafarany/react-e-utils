@@ -10,21 +10,21 @@ export const RefState = (initValue) => {
     get state() {
       return state.value;
     },
-    set state(value) {
-      state.value = value;
+    set state(v) {
+      state.value = v;
     },
     get ref() {
       return ref.value;
     },
-    set ref(value) {
-      ref.value = value;
+    set ref(v) {
+      ref.value = v;
     },
     get value() {
       return ref.value;
     },
-    set value(value) {
-      ref.value = value;
-      state.value = value;
+    set value(v) {
+      ref.value = v;
+      state.value = v;
     },
   };
 };

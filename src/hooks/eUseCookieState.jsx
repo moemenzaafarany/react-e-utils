@@ -22,8 +22,8 @@ const CookieState = (name, { fallback = null, expireHours = 24 * 7 } = {}) => {
     get value() {
       return value.value;
     },
-    set value(value) {
-      value.value = value;
+    set value(v) {
+      value.value = v;
     },
     get save() {
       return save;
